@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <title>DEMO</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body onload='loadingAudio()'>
+    <div class="location">
+        <table id="keyboard">
+            <tr>
+                <td>
+                    <span class="clef0">&#119070;</span>
+                    <hr class="line1-1" />
+                    <hr class="line1-2" />
+                    <hr class="line1-3" />
+                    <hr class="line1-4" />
+                    <hr class="line1-5" />
+                </td>
+                <td class="triangle">
+                    <div class="IDspread"></div>
+                    <div class="triangleTop"></div>
+                    <button class="key" id="q">
+                        <span class="note2">&#119062;</span>
+                        <span class="note4">&#119133;</span>
+                        <span class="text">do</span>
+                    </button>
+                    <div class="triangleBottom"></div>
+                </td>
+                <td class="triangle">
+                    <div class="IDspread"></div>
+                    <div class="triangleTop"></div>
+                    <button class="key" id="w">
+                        <span class="note3">&#119062;</span>
+                        <span class="note4">&#119133;</span>
+                        <span class="text">re</span>
+                    </button>
+                    <div class="triangleBottom"></div>
+                </td>
+                <td class="triangle">
+                    <div class="IDspread"></div>
+                    <div class="triangleTop"></div>
+                    <button class="key" id="e">
+                        <span class="note2">&#119062;</span>
+                        <span class="note3">&#119062;</span>
+                        <span class="note4">&#119133;</span>
+                        <span class="text">mi</span>
+                    </button>
+                    <div class="triangleBottom"></div>
+                </td>
+                <td class="triangle">
+                    <div class="IDspread"></div>
+                    <div class="triangleTop"></div>
+                    <button class="key" id="r">
+                        <span class="note1">&#119062;</span>
+                        <span class="note3">&#119062;</span>
+                        <span class="note4">&#119133;</span>
+                        <span class="text">fa</span>
+                    </button>
+                    <div class="triangleBottom"></div>
+                </td>
+                <td class="triangle">
+                    <div class="IDspread"></div>
+                    <div class="triangleTop"></div>
+                    <button class="key" id="t">
+                        <span class="note1">&#119062;</span>
+                        <span class="note2">&#119062;</span>
+                        <span class="note3">&#119062;</span>
+                        <span class="note4">&#119133;</span>
+                        <span class="text">so</span>
+                    </button>
+                    <div class="triangleBottom"></div>
+                </td>
+                <td class="triangle">
+                    <div class="IDspread"></div>
+                    <div class="triangleTop"></div>
+                    <button class="key" id="y">
+                        <span class="note5">&#119062;</span>
+                        <span class="note7">&#119062;</span>
+                        <span class="note8">&#119062;</span>
+                        <span class="note9">&#119133;</span>
+                        <span class="text">la</span>
+                    </button>
+                    <div class="triangleBottom"></div>
+                </td>
+                <td class="triangle">
+                    <div class="IDspread"></div>
+                    <div class="triangleTop"></div>
+                    <button class="key" id="u">
+                        <span class="note5">&#119062;</span>
+                        <span class="note6">&#119062;</span>
+                        <span class="note7">&#119062;</span>
+                        <span class="note8">&#119062;</span>
+                        <span class="note9">&#119133;</span>
+                        <span class="text">ti</span>
+                    </button>
+                    <div class="triangleBottom"></div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="clef">&#119073;</span>
+                    <hr class="line2-1" />
+                    <hr class="line2-2" />
+                    <hr class="line2-3" />
+                    <hr class="line2-4" />
+                    <hr class="line2-5" />
+                </td>
+                <td class="triangle">
+                    <div class="IDspread"></div>
+                    <div class="triangleTop"></div>
+                    <button class="key" id="a">
+                        <span class="note2">&#119062;</span>
+                        <span class="note4">&#119133;</span>
+                        <span class="text">do</span>
+                    </button>
+                    <div class="triangleBottom"></div>
+                </td>
+                <td class="triangle">
+                    <div class="IDspread"></div>
+                    <div class="triangleTop"></div>
+                    <button class="key" id="s">
+                        <span class="note3">&#119062;</span>
+                        <span class="note4">&#119133;</span>
+                        <span class="text">re</span>
+                    </button>
+                    <div class="triangleBottom"></div>
+                </td>
+                <td class="triangle">
+                    <div class="IDspread"></div>
+                    <div class="triangleTop"></div>
+                    <button class="key" id="d">
+                        <span class="note2">&#119062;</span>
+                        <span class="note3">&#119062;</span>
+                        <span class="note4">&#119133;</span>
+                        <span class="text">mi</span>
+                    </button>
+                    <div class="triangleBottom"></div>
+                </td>
+                <td class="triangle">
+                    <div class="IDspread"></div>
+                    <div class="triangleTop"></div>
+                    <button class="key" id="f">
+                        <span class="note1">&#119062;</span>
+                        <span class="note3">&#119062;</span>
+                        <span class="note4">&#119133;</span>
+                        <span class="text">fa</span>
+                    </button>
+                    <div class="triangleBottom"></div>
+                </td>
+                <td class="triangle">
+                    <div class="IDspread"></div>
+                    <div class="triangleTop"></div>
+                    <button class="key" id="g">
+                        <span class="note1">&#119062;</span>
+                        <span class="note2">&#119062;</span>
+                        <span class="note3">&#119062;</span>
+                        <span class="note4">&#119133;</span>
+                        <span class="text">so</span>
+                    </button>
+                    <div class="triangleBottom"></div>
+                </td>
+                <td class="triangle">
+                    <div class="IDspread"></div>
+                    <div class="triangleTop"></div>
+                    <button class="key" id="h">
+                        <span class="note5">&#119062;</span>
+                        <span class="note7">&#119062;</span>
+                        <span class="note8">&#119062;</span>
+                        <span class="note9">&#119133;</span>
+                        <span class="text">la</span>
+                    </button>
+                    <div class="triangleBottom"></div>
+                </td>
+                <td class="triangle">
+                    <div class="IDspread"></div>
+                    <div class="triangleTop"></div>
+                    <button class="key" id="j">
+                        <span class="note5">&#119062;</span>
+                        <span class="note6">&#119062;</span>
+                        <span class="note7">&#119062;</span>
+                        <span class="note8">&#119062;</span>
+                        <span class="note9">&#119133;</span>
+                        <span class="text">ti</span>
+                    </button>
+                    <div class="triangleBottom"></div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="clef">&#119074;</span>
+                    <hr class="line3-1" />
+                    <hr class="line3-2" />
+                    <hr class="line3-3" />
+                    <hr class="line3-4" />
+                    <hr class="line3-5" />
+                </td>
+                <td class="triangle">
+                    <div class="IDspread"></div>
+                    <div class="triangleTop"></div>
+                    <button class="key" id="z">
+                        <span class="note2">&#119062;</span>
+                        <span class="note4">&#119133;</span>
+                        <span class="text">do</span>
+                    </button>
+                    <div class="triangleBottom"></div>
+                </td>
+                <td class="triangle">
+                    <div class="IDspread"></div>
+                    <div class="triangleTop"></div>
+                    <button class="key" id="x">
+                        <span class="note3">&#119062;</span>
+                        <span class="note4">&#119133;</span>
+                        <span class="text">re</span>
+                    </button>
+                    <div class="triangleBottom"></div>
+                </td>
+                <td class="triangle">
+                    <div class="IDspread"></div>
+                    <div class="triangleTop"></div>
+                    <button class="key" id="c">
+                        <span class="note2">&#119062;</span>
+                        <span class="note3">&#119062;</span>
+                        <span class="note4">&#119133;</span>
+                        <span class="text">mi</span>
+                    </button>
+                    <div class="triangleBottom"></div>
+                </td>
+                <td class="triangle">
+                    <div class="IDspread"></div>
+                    <div class="triangleTop"></div>
+                    <button class="key" id="v">
+                        <span class="note1">&#119062;</span>
+                        <span class="note3">&#119062;</span>
+                        <span class="note4">&#119133;</span>
+                        <span class="text">fa</span>
+                    </button>
+                    <div class="triangleBottom"></div>
+                </td>
+                <td class="triangle">
+                    <div class="IDspread"></div>
+                    <div class="triangleTop"></div>
+                    <button class="key" id="b">
+                        <span class="note1">&#119062;</span>
+                        <span class="note2">&#119062;</span>
+                        <span class="note3">&#119062;</span>
+                        <span class="note4">&#119133;</span>
+                        <span class="text">so</span>
+                    </button>
+                    <div class="triangleBottom"></div>
+                </td>
+                <td class="triangle">
+                    <div class="IDspread"></div>
+                    <div class="triangleTop"></div>
+                    <button class="key" id="n">
+                        <span class="note5">&#119062;</span>
+                        <span class="note7">&#119062;</span>
+                        <span class="note8">&#119062;</span>
+                        <span class="note9">&#119133;</span>
+                        <span class="text">la</span>
+                    </button>
+                    <div class="triangleBottom"></div>
+                </td>
+                <td class="triangle">
+                    <div class="IDspread"></div>
+                    <div class="triangleTop"></div>
+                    <button class="key" id="m">
+                        <span class="note5">&#119062;</span>
+                        <span class="note6">&#119062;</span>
+                        <span class="note7">&#119062;</span>
+                        <span class="note8">&#119062;</span>
+                        <span class="note9">&#119133;</span>
+                        <span class="text">ti</span>
+                    </button>
+                    <div class="triangleBottom"></div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <script src="js/play.js"></script>
+</body>
+
+</html>
