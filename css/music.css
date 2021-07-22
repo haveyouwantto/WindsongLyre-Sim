@@ -1,5 +1,9 @@
 :root {
-    --input-color: rgb(204, 204, 189);
+    --input-color: #ede5d8;
+    --dialog-background-color: #3e4556;
+    --dialog-shadow-color: #393e52;
+    --background-text: #d3bc8e;
+    --foreground-text: #3b4255;
 }
 
 .music {
@@ -48,27 +52,23 @@
     width: 32vw;
     height: 22vw;
     z-index: 999;
-    border-radius: 1vw;
-    background-color: var(--background-color);
+    background-color: var(--dialog-background-color);
     font-family: 'genshin impact', Fallback, sans-serif;
-    box-shadow: 0 0 0.3vw 0.3vw var(--box-shadow-color1) inset,
-    0 0 0.1vw 0.6vw var(--box-shadow-color2),
+    box-shadow: 0 0 0.3vw 0.3vw var(--dialog-shadow-color) inset,
     0 0 0 100vw rgba(0, 0, 0, 0.5);
 }
 
 .textareaInput {
     font-size: 1vw;
-    width: 30.8vw;
-    height: 13.1vw;
-    margin: 0.8vw 0;
+    width: 27.5vw;
+    height: 11vw;
+    margin: 1vw 1.5vw 1vw;
     padding: 0.6vw;
-    border: 0;
+    border: 2px solid #5d5d5f;
     resize: none;
-    color: rgb(98, 97, 79);
-    border-radius: 1vw;
-    background-color: rgba(0, 0, 0, 0);
+    color: var(--background-text);
+    background-color: #353d4f;
     font-family: 'genshin impact', Fallback, sans-serif;
-    box-shadow: 0 0 0.3vw 0.3vw var(--box-shadow-color1) inset;
     z-index: 999;
 }
 
@@ -117,31 +117,31 @@
     font-size: 1vw;
     margin: 1vw 0 0 1vw;
     height: 1.4vw;
+    color: var(--background-text);
 }
 
 .bpm {
     border: 0;
     padding: 0 0.3vw;
-    width: 22vw;
-    height: 1.4vw;
+    width: 21vw;
+    height: 2vw;
     font-size: 1vw;
-    border-radius: 1vw;
+    border-radius: 2vw;
     margin: 1vw 0.5vw 0 0.5vw;
+    padding-left: 0.5vw;
+    padding-right: 0.5vw;
     background-color: var(--input-color);
-    box-shadow: 0 0 0.1vw 0.3vw var(--input-color);
+    color: var(--foreground-text);
     font-family: 'genshin impact', Fallback, sans-serif;
 }
 
 .closeMusic {
     display: inline-block;
     text-align: center;
-    width: 1.4vw;
-    font-size: 1vw;
+    font-size: 2vw;
     margin: 1vw 1vw 0 1vw;
-    height: 1.4vw;
-    border-radius: 1vw;
-    background-color: var(--input-color);
-    box-shadow: 0 0 0.1vw 0.3vw var(--input-color);
+    height: 1.8vw;
+    color: var(--background-text);
     font-family: 'genshin impact', Fallback, sans-serif;
 }
 
@@ -154,12 +154,12 @@
     border: 0;
     padding: 0;
     width: 8vw;
-    height: 2vw;
+    height: 2.5vw;
     font-size: 1vw;
-    border-radius: 1vw;
+    border-radius: 2.5vw;
     margin: 0 0 1vw 0;
     background-color: var(--input-color);
-    box-shadow: 0 0 0.1vw 0.3vw var(--input-color);
+    color: var(--foreground-text);
     font-family: 'genshin impact', Fallback, sans-serif;
 }
 
@@ -179,18 +179,15 @@
 .start:active {
     color: rgba(255, 255, 255, 0.8);
     background-color: rgb(114, 191, 34);
-    box-shadow: 0 0 0.1vw 0.3vw rgb(114, 191, 34);
 }
 
 .pause:active,
 .closeMusic:active {
     color: rgba(255, 255, 255, 0.8);
     background-color: rgb(205, 125, 116);
-    box-shadow: 0 0 0.1vw 0.3vw rgb(205, 125, 116);
 }
 
 .clear:active {
     color: rgba(255, 255, 255, 0.8);
     background-color: rgb(113, 176, 253);
-    box-shadow: 0 0 0.1vw 0.3vw rgb(113, 176, 253);
 }
