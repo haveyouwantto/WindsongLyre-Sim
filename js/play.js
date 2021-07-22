@@ -120,7 +120,8 @@ let delay = [4000, 2000, 1000, 500, 250, 125, 62.5, 31.25];// 60BPM
 let newDelay = [];// ???BPM
 
 function playSheet(string, i = 0) {
-    let delayTime = 3;
+    let delayTime = newDelay[3];
+    let group = [];
     if (i >= string.length || stopped) {
         stopped = false;
         for (delayNum in delay) newDelay[delayNum] = delay[delayNum];
@@ -133,17 +134,33 @@ function playSheet(string, i = 0) {
             i++;
         }
         if (string[++i] == '|') {
-            delayTime = string[++i];
+            group = getNewDelayTime(string, i);
+            delayTime = group[0];
+            i = group[1];
         }
-        setTimeout(playSheet, newDelay[delayTime], string, i);
+        setTimeout(playSheet, delayTime, string, i);
     } else {
         play(string[i].toLowerCase());
         if (string[++i] == '|') {
-            delayTime = string[++i];
+            group = getNewDelayTime(string, i);
+            delayTime = group[0];
+            i = group[1];
             i++;
         }
-        setTimeout(playSheet, newDelay[delayTime], string, i);
+        console.log("\u5ef6\u8fdf: " + delayTime + "ms");
+        setTimeout(playSheet, delayTime, string, i);
     }
+}
+
+function getNewDelayTime(string, i) {
+    let newDelayTime = newDelay[string[++i]];
+    if (string[++i] == "+") {
+        do {
+            newDelayTime += newDelay[string[++i]];
+        } while (string[++i] == "+");
+    }
+    i--;
+    return [newDelayTime, i];
 }
 
 function startMusic() {
