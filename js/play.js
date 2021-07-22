@@ -138,8 +138,7 @@ let delay = [4000, 2000, 1000, 500, 250, 125, 62.5, 31.25];// 60BPM
 let newDelay = [];// ???BPM
 
 function playSheet(string, i = 0) {
-    let delayTime = newDelay[3];
-    let group = [];
+    let delayTime = 3;
     if (i >= string.length || stopped) {
         stopped = false;
         for (delayNum in delay) newDelay[delayNum] = delay[delayNum];
@@ -152,54 +151,17 @@ function playSheet(string, i = 0) {
             i++;
         }
         if (string[++i] == '|') {
-            group = getNewDelayTime(string, i);
-            delayTime = group[0];
-            i = group[1];
+            delayTime = string[++i];
         }
-        setTimeout(playSheet, delayTime, string, i);
+        setTimeout(playSheet, newDelay[delayTime], string, i);
     } else {
         play(getStringLetter(string, i));
         if (string[++i] == '|') {
-            group = getNewDelayTime(string, i);
-            delayTime = group[0];
-            i = group[1];
+            delayTime = string[++i];
             i++;
         }
-        console.log("\u5ef6\u8fdf: " + delayTime + "ms");
-        setTimeout(playSheet, delayTime, string, i);
+        setTimeout(playSheet, newDelay[delayTime], string, i);
     }
-}
-
-function getStringLetter(string, i) {
-    let stringLetter;
-    switch (string[i]) {
-        case "E": stringLetter = string[i].toLowerCase();
-            break;
-        case "U": stringLetter = string[i].toLowerCase();
-            break;
-        case "D": stringLetter = string[i].toLowerCase();
-            break;
-        case "J": stringLetter = string[i].toLowerCase();
-            break;
-        case "C": stringLetter = string[i].toLowerCase();
-            break;
-        case "M": stringLetter = string[i].toLowerCase();
-            break;
-        default:
-            stringLetter = string[i];
-    }
-    return stringLetter;
-}
-
-function getNewDelayTime(string, i) {
-    let newDelayTime = newDelay[string[++i]];
-    if (string[++i] == "+") {
-        do {
-            newDelayTime += newDelay[string[++i]];
-        } while (string[++i] == "+");
-    }
-    i--;
-    return [newDelayTime, i];
 }
 
 function startMusic() {
