@@ -1,27 +1,45 @@
 let keyMap = {
-    "a": "1",
-    "s": "2",
-    "d": "3",
-    "f": "4",
-    "g": "5",
-    "h": "6",
-    "j": "7",
+    "q": "natural/1+@c-2",
+    "w": "natural/2+@d-2",
+    "e": "natural/3+@e-2",
+    "r": "natural/4+@f-2",
+    "t": "natural/5+@g-2",
+    "y": "natural/6+@a-2",
+    "u": "natural/7+@b-2",
 
-    "q": "1+",
-    "w": "2+",
-    "e": "3+",
-    "r": "4+",
-    "t": "5+",
-    "y": "6+",
-    "u": "7+",
+    "a": "natural/1@c-1",
+    "s": "natural/2@d-1",
+    "d": "natural/3@e-1",
+    "f": "natural/4@f-1",
+    "g": "natural/5@g-1",
+    "h": "natural/6@a-1",
+    "j": "natural/7@b-1",
 
-    "z": "1-",
-    "x": "2-",
-    "c": "3-",
-    "v": "4-",
-    "b": "5-",
-    "n": "6-",
-    "m": "7-",
+    "z": "natural/1-@c-",
+    "x": "natural/2-@d-",
+    "c": "natural/3-@e-",
+    "v": "natural/4-@f-",
+    "b": "natural/5-@g-",
+    "n": "natural/6-@a-",
+    "m": "natural/7-@b-",
+
+    "Q": "sharp/1+@c-2",
+    "W": "sharp/2+@d-2",
+    "R": "sharp/4+@f-2",
+    "T": "sharp/5+@g-2",
+    "Y": "sharp/6+@a-2",
+
+    "A": "sharp/1@c-1",
+    "S": "sharp/2@d-1",
+    "F": "sharp/4@f-1",
+    "G": "sharp/5@g-1",
+    "H": "sharp/6@a-1",
+
+    "Z": "sharp/1-@c-",
+    "X": "sharp/2-@d-",
+    "V": "sharp/4-@f-",
+    "B": "sharp/5-@g-",
+    "N": "sharp/6-@a-",
 };
 
 var musicNum = new Map();
@@ -62,7 +80,7 @@ function clickEnter(e) {
 
 for (let node of document.querySelectorAll('.key')) {
     node.addEventListener('click', e => {
-        if(show != -1)play(node.id, true);
+        if (show != -1) play(node.id, true);
     });
 }
 
@@ -91,8 +109,8 @@ function play(key, autoRelease = true) {
     let file = keyMap[key];
     if (file != null) {
         notes[file] = true;
-        document.getElementById(key).parentNode.classList.add('key-press');
-        let spread = document.getElementById(key).parentNode.childNodes[1];
+        document.getElementById(key.toLowerCase()).parentNode.classList.add('key-press');
+        let spread = document.getElementById(key.toLowerCase()).parentNode.childNodes[1];
         if (spread.getAttribute('id') == 'spread1') {
             spread.setAttribute('id', 'spread2')
         } else {
@@ -110,7 +128,7 @@ function release(key) {
     let file = keyMap[key];
     if (file != null) {
         notes[file] = false;
-        document.getElementById(key).parentNode.classList.remove('key-press');
+        document.getElementById(key.toLowerCase()).parentNode.classList.remove('key-press');
     }
 }
 
@@ -130,7 +148,7 @@ function playSheet(string, i = 0) {
     if (string[i] == '(') {
         i++;
         while (string[i] != ')') {
-            play(string[i].toLowerCase());
+            play(getStringLetter(string, i));
             i++;
         }
         if (string[++i] == '|') {
@@ -140,7 +158,7 @@ function playSheet(string, i = 0) {
         }
         setTimeout(playSheet, delayTime, string, i);
     } else {
-        play(string[i].toLowerCase());
+        play(getStringLetter(string, i));
         if (string[++i] == '|') {
             group = getNewDelayTime(string, i);
             delayTime = group[0];
@@ -150,6 +168,27 @@ function playSheet(string, i = 0) {
         console.log("\u5ef6\u8fdf: " + delayTime + "ms");
         setTimeout(playSheet, delayTime, string, i);
     }
+}
+
+function getStringLetter(string, i) {
+    let stringLetter;
+    switch (string[i]) {
+        case "E": stringLetter = string[i].toLowerCase();
+            break;
+        case "U": stringLetter = string[i].toLowerCase();
+            break;
+        case "D": stringLetter = string[i].toLowerCase();
+            break;
+        case "J": stringLetter = string[i].toLowerCase();
+            break;
+        case "C": stringLetter = string[i].toLowerCase();
+            break;
+        case "M": stringLetter = string[i].toLowerCase();
+            break;
+        default:
+            stringLetter = string[i];
+    }
+    return stringLetter;
 }
 
 function getNewDelayTime(string, i) {
@@ -169,7 +208,7 @@ function startMusic() {
         let multiplier = 60 / bpm;
         for (delayNum in delay) newDelay[delayNum] = delay[delayNum] * multiplier;
         let input = document.getElementById("textareaInput").value;
-        if(input != "") {
+        if (input != "") {
             showTextarea();
             playSheet(input);
         }
