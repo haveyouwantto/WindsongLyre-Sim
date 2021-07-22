@@ -37,9 +37,32 @@ function loadingAudio() {
     }
 }
 
+var show = 1;
+function showTextarea() {
+    let inputDiv = document.getElementById("input");
+    if (show == -1) {
+        inputDiv.style = "display:none";
+        show = 1;
+    } else {
+        inputDiv.style = "display: inline-block";
+        show = -1;
+    }
+}
+
+// 检测回车事件
+function clickEnter(e) {
+    var theEvent = e || window.event;
+    var code = theEvent.keyCode || theEvent.which || theEvent.charCode;
+    if (code == 13) {
+        // 阻止事件的默认行为
+        e.preventDefault();
+        startMusic();
+    }
+}
+
 for (let node of document.querySelectorAll('.key')) {
     node.addEventListener('click', e => {
-        play(node.id, true);
+        if(show != -1)play(node.id, true);
     });
 }
 
@@ -47,7 +70,7 @@ let notes = {};
 let lastTime = Date.now();
 document.onkeydown = e => {
     let note = keyMap[e.key];
-    if (!notes[note]) {
+    if (!notes[note] && show != -1) {
         play(e.key, false);
     }
 }
@@ -92,23 +115,55 @@ function release(key) {
 }
 
 let stopped = false;
-let delay = 480;
+let bpm = 60;
+let delay = [4000, 2000, 1000, 500, 250, 125, 62.5, 31.25];// 60BPM
+let newDelay = [];// ???BPM
 
 function playSheet(string, i = 0) {
+    let delayTime = 3;
     if (i >= string.length || stopped) {
         stopped = false;
+        for (delayNum in delay) newDelay[delayNum] = delay[delayNum];
         return;
     }
     if (string[i] == '(') {
         i++;
         while (string[i] != ')') {
-            play(string[i].toLowerCase())
+            play(string[i].toLowerCase());
             i++;
         }
-        setTimeout(playSheet, delay, string, ++i);
+        if (string[++i] == '|') {
+            delayTime = string[++i];
+        }
+        setTimeout(playSheet, newDelay[delayTime], string, i);
     } else {
-        play(string[i].toLowerCase())
-        i++;
-        setTimeout(playSheet, delay, string, i);
+        play(string[i].toLowerCase());
+        if (string[++i] == '|') {
+            delayTime = string[++i];
+            i++;
+        }
+        setTimeout(playSheet, newDelay[delayTime], string, i);
     }
+}
+
+function startMusic() {
+    bpm = document.getElementById("bpm").value;
+    if (bpm != "") {
+        let multiplier = 60 / bpm;
+        for (delayNum in delay) newDelay[delayNum] = delay[delayNum] * multiplier;
+        let input = document.getElementById("textareaInput").value;
+        if(input != "") {
+            showTextarea();
+            playSheet(input);
+        }
+    }
+}
+
+function pauseMusic() {
+    stopped = true;
+}
+
+function clearMusic() {
+    document.getElementById("bpm").value = "";
+    document.getElementById("textareaInput").value = "";
 }

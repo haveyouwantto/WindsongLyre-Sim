@@ -30,15 +30,14 @@ body {
     background-color: var(--background-color);
     box-shadow: 0 0 0.1vw 0.4vw var(--box-shadow-color1),
     0 0 0.1vw 0.6vw var(--box-shadow-color2);
-    /* text-shadow: 0 0 0.1vw, 0 0 0.1vw; */
 }
 
 .text {
     display: inline-block;
     font-size: 1.2vw;
-    font-family: 'genshin impact', Fallback, sans-serif;
     margin-top: 3.2vw;
     color: #969478;
+    font-family: 'genshin impact', Fallback, sans-serif;
 }
 
 .triangle {
@@ -206,6 +205,7 @@ body {
 
 .note1, .note2, .note3, .note4,
 .note5, .note6, .note7, .note8, .note9 {
+    pointer-events: none;
     color: #589990;
     position: absolute;
     display: inline-block;

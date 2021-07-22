@@ -1,0 +1,196 @@
+:root {
+    --input-color: rgb(204, 204, 189);
+}
+
+.music {
+    position: fixed;
+    top: 2vw;
+    right: 2vw;
+    width: 2vw;
+    height: 2vw;
+    border-radius: 999px;
+    background-color: var(--background-color);
+    box-shadow: 0 0 0.1vw 0.4vw var(--box-shadow-color1),
+    0 0 0.1vw 0.6vw var(--box-shadow-color2);
+}
+
+.music:hover {
+    background-color: rgb(161, 161, 148);
+    box-shadow: 0 0 0.1vw 0.6vw rgb(172, 172, 152, 0.8);
+}
+
+.music:active {
+    background-color: var(--background-color-hover1);
+    box-shadow: 0 0 0.1vw 0.5vw var(--background-color-hover2);
+}
+
+.musicClef {
+    display: inline-block;
+    position: absolute;
+    top: -0.4vw;
+    width: 2vw;
+    height: 2vw;
+    color: #589990;
+    font-size: 2vw;
+    font-weight: 900;
+    text-align: center;
+}
+
+.musicClef:active {
+    color:rgba(255, 255, 255, 0.8);
+}
+
+.input {
+    display: none;
+    position: fixed;
+    top: calc(50% - 11vw);
+    right: calc(50% - 16vw);
+    width: 32vw;
+    height: 22vw;
+    z-index: 999;
+    border-radius: 1vw;
+    background-color: var(--background-color);
+    font-family: 'genshin impact', Fallback, sans-serif;
+    box-shadow: 0 0 0.3vw 0.3vw var(--box-shadow-color1) inset,
+    0 0 0.1vw 0.6vw var(--box-shadow-color2),
+    0 0 0 100vw rgba(0, 0, 0, 0.5);
+}
+
+.textareaInput {
+    font-size: 1vw;
+    width: 30.8vw;
+    height: 13.1vw;
+    margin: 0.8vw 0;
+    padding: 0.6vw;
+    border: 0;
+    resize: none;
+    color: rgb(98, 97, 79);
+    border-radius: 1vw;
+    background-color: rgba(0, 0, 0, 0);
+    font-family: 'genshin impact', Fallback, sans-serif;
+    box-shadow: 0 0 0.3vw 0.3vw var(--box-shadow-color1) inset;
+    z-index: 999;
+}
+
+.textareaInput::-webkit-input-placeholder {
+    text-align: center;
+    line-height: 13.1vw;
+    font-size: 3vw;
+}
+
+/*滚动条大小*/
+.textareaInput::-webkit-scrollbar {
+    width: 0.5vw;
+}
+/*正常情况下角落和主干部分的样式*/
+.textareaInput::-webkit-scrollbar-corner,
+.textareaInput::-webkit-scrollbar-track {
+    opacity: 0;
+}
+/*正常情况下滑块的样式*/
+.textareaInput::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 0.5vw;
+}
+/*鼠标悬浮在该类指向的控件上时滑块的样式*/
+.textareaInput:hover::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.5);
+}
+/*鼠标悬浮在滑块上时滑块的样式*/
+.textareaInput::-webkit-scrollbar-thumb:hover {
+    box-shadow: 0 0 0.1vw 0.1vw rgba(255, 255, 255, 0.3) inset;
+}
+/*鼠标悬浮在滚动条上的主干部分*/
+.textareaInput::-webkit-scrollbar-track:hover {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 0.5vw;
+}
+
+.textareaInput:focus,
+.bpm:focus {
+    outline: none;
+}
+
+.bpmText {
+    display: inline-block;
+    width: 3vw;
+    font-size: 1vw;
+    margin: 1vw 0 0 1vw;
+    height: 1.4vw;
+}
+
+.bpm {
+    border: 0;
+    padding: 0 0.3vw;
+    width: 22vw;
+    height: 1.4vw;
+    font-size: 1vw;
+    border-radius: 1vw;
+    margin: 1vw 0.5vw 0 0.5vw;
+    background-color: var(--input-color);
+    box-shadow: 0 0 0.1vw 0.3vw var(--input-color);
+    font-family: 'genshin impact', Fallback, sans-serif;
+}
+
+.closeMusic {
+    display: inline-block;
+    text-align: center;
+    width: 1.4vw;
+    font-size: 1vw;
+    margin: 1vw 1vw 0 1vw;
+    height: 1.4vw;
+    border-radius: 1vw;
+    background-color: var(--input-color);
+    box-shadow: 0 0 0.1vw 0.3vw var(--input-color);
+    font-family: 'genshin impact', Fallback, sans-serif;
+}
+
+.buttonGroup {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.start, .pause, .clear {
+    border: 0;
+    padding: 0;
+    width: 8vw;
+    height: 2vw;
+    font-size: 1vw;
+    border-radius: 1vw;
+    margin: 0 0 1vw 0;
+    background-color: var(--input-color);
+    box-shadow: 0 0 0.1vw 0.3vw var(--input-color);
+    font-family: 'genshin impact', Fallback, sans-serif;
+}
+
+.start:hover {
+    color: rgb(114, 191, 34);
+}
+
+.pause:hover,
+.closeMusic:hover {
+    color: rgb(205, 125, 116);
+}
+
+.clear:hover {
+    color: rgb(113, 176, 253);
+}
+
+.start:active {
+    color: rgba(255, 255, 255, 0.8);
+    background-color: rgb(114, 191, 34);
+    box-shadow: 0 0 0.1vw 0.3vw rgb(114, 191, 34);
+}
+
+.pause:active,
+.closeMusic:active {
+    color: rgba(255, 255, 255, 0.8);
+    background-color: rgb(205, 125, 116);
+    box-shadow: 0 0 0.1vw 0.3vw rgb(205, 125, 116);
+}
+
+.clear:active {
+    color: rgba(255, 255, 255, 0.8);
+    background-color: rgb(113, 176, 253);
+    box-shadow: 0 0 0.1vw 0.3vw rgb(113, 176, 253);
+}
