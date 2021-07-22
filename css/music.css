@@ -74,8 +74,9 @@
 
 .textareaInput::-webkit-input-placeholder {
     text-align: center;
-    line-height: 13.1vw;
-    font-size: 3vw;
+    line-height: 11vw;
+    color: #5e6c7c;
+    font-size: 1.4vw;
 }
 
 /*滚动条大小*/
