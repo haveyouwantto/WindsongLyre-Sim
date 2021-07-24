@@ -1,17 +1,18 @@
 :root {
     --input-color: #ede5d8;
-    --dialog-background-color: #3e4556;
-    --dialog-shadow-color: #393e52;
     --background-text: #d3bc8e;
     --foreground-text: #3b4255;
+    --dialog-background-color: #3e4556;
+    --dialog-shadow-color1: rgb(60, 67, 83);
+    --dialog-shadow-color2: rgb(57, 62, 82);
 }
 
 .music {
-    position: fixed;
     top: 2vw;
     right: 2vw;
     width: 2vw;
     height: 2vw;
+    position: fixed;
     border-radius: 999px;
     background-color: var(--background-color);
     box-shadow: 0 0 0.1vw 0.4vw var(--box-shadow-color1),
@@ -29,54 +30,51 @@
 }
 
 .musicClef {
-    display: inline-block;
-    position: absolute;
-    top: -0.4vw;
     width: 2vw;
     height: 2vw;
-    color: #589990;
+    top: -0.4vw;
     font-size: 2vw;
     font-weight: 900;
     text-align: center;
+    position: absolute;
+    display: inline-block;
+    color:  var(--note-color);
 }
 
 .musicClef:active {
-    color:rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .input {
+    width: 36vw;
+    height: 22vw;
+    z-index: 999;
     display: none;
     position: fixed;
     top: calc(50% - 11vw);
-    right: calc(50% - 16vw);
-    width: 32vw;
-    height: 22vw;
-    z-index: 999;
+    right: calc(50% - 18vw);
     background-color: var(--dialog-background-color);
     font-family: 'genshin impact', Fallback, sans-serif;
-    box-shadow: 0 0 0.3vw 0.3vw var(--dialog-shadow-color) inset,
+    box-shadow: 0 0 0 0.1vw rgb(75, 79, 89),
+    0 0 0.1vw 0.3vw var(--dialog-shadow-color1),
+    0 0 0.1vw 0.6vw var(--dialog-shadow-color2),
     0 0 0 100vw rgba(0, 0, 0, 0.5);
 }
 
 .textareaInput {
-    font-size: 1vw;
-    width: 27.5vw;
-    height: 11vw;
-    margin: 1vw 1.5vw 1vw;
-    padding: 0.6vw;
-    border: 2px solid #5d5d5f;
+    border: 0;
     resize: none;
-    color: var(--background-text);
-    background-color: #353d4f;
-    font-family: 'genshin impact', Fallback, sans-serif;
     z-index: 999;
-}
-
-.textareaInput::-webkit-input-placeholder {
-    text-align: center;
-    line-height: 11vw;
-    color: #5e6c7c;
-    font-size: 1.4vw;
+    width: 30.8vw;
+    height: 12.1vw;
+    font-size: 1vw;
+    padding: 0.6vw;
+    margin: 0.8vw 2vw;
+    word-break:break-all;
+    color: var(--background-text);
+    background-color: rgb(53, 61, 79);
+    outline: 0.15vw solid rgb(93, 93, 95);
+    font-family: 'genshin impact', Fallback, sans-serif;
 }
 
 /*滚动条大小*/
@@ -90,60 +88,91 @@
 }
 /*正常情况下滑块的样式*/
 .textareaInput::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.3);
     border-radius: 0.5vw;
+    background: rgba(0, 0, 0, 0.3);
 }
 /*鼠标悬浮在该类指向的控件上时滑块的样式*/
 .textareaInput:hover::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.5);
+    background: rgb(235, 229, 216);
 }
 /*鼠标悬浮在滑块上时滑块的样式*/
 .textareaInput::-webkit-scrollbar-thumb:hover {
-    box-shadow: 0 0 0.1vw 0.1vw rgba(255, 255, 255, 0.3) inset;
+    background: rgb(194, 195, 191);
 }
 /*鼠标悬浮在滚动条上的主干部分*/
 .textareaInput::-webkit-scrollbar-track:hover {
-    background: rgba(0, 0, 0, 0.1);
     border-radius: 0.5vw;
+    background: rgba(0, 0, 0, 0.1);
 }
 
-.textareaInput:focus,
+.textareaInput::-webkit-input-placeholder {
+    font-size: 1.4vw;
+    text-align: center;
+    line-height: 12.1vw;
+    color: rgb(94, 108, 124);
+}
+
 .bpm:focus {
     outline: none;
 }
 
+.textareaInput:focus {
+    outline: 0.15vw solid rgb(93, 93, 95);
+}
+
 .bpmText {
-    display: inline-block;
     width: 3vw;
+    height: 2vw;
     font-size: 1vw;
-    margin: 1vw 0 0 1vw;
-    height: 1.4vw;
+    display: inline-block;
+    margin: 0.6vw 0 0 2.5vw;
     color: var(--background-text);
 }
 
 .bpm {
     border: 0;
-    padding: 0 0.3vw;
-    width: 21vw;
+    width: 6vw;
     height: 2vw;
     font-size: 1vw;
-    border-radius: 2vw;
-    margin: 1vw 0.5vw 0 0.5vw;
-    padding-left: 0.5vw;
-    padding-right: 0.5vw;
-    background-color: var(--input-color);
+    padding: 0 0.5vw;
+    border-radius: 1vw;
+    margin: 0.6vw 0.5vw;
     color: var(--foreground-text);
+    background-color: var(--input-color);
     font-family: 'genshin impact', Fallback, sans-serif;
 }
 
 .closeMusic {
-    display: inline-block;
-    text-align: center;
+    width: 2vw;
+    height: 2vw;
+	float: right;
+    display: block;
     font-size: 2vw;
-    margin: 1vw 1vw 0 1vw;
-    height: 1.8vw;
-    color: var(--background-text);
+    font-weight: 900;
+    border-radius: 1vw;
+    text-align: center;
+    margin: 0.2vw 1vw 0 0;
+    color: rgb(174, 159, 128);
+    transform: rotate(45deg) scaleX(1.6);
     font-family: 'genshin impact', Fallback, sans-serif;
+}
+
+.closeMusic:hover {
+    color: rgb(209, 195, 157);
+}
+
+.closeMusic:active {
+    color: rgb(81, 84, 93);
+}
+
+.closeMusic::after {
+    left: 0.1vw;
+    top: -2.7vw;
+    display: block;
+    content: '\2B0C';
+    text-align: center;
+    position: relative;
+    transform: rotate(90deg) scale(1.6, 0.625);
 }
 
 .buttonGroup {
@@ -155,40 +184,74 @@
     border: 0;
     padding: 0;
     width: 8vw;
-    height: 2.5vw;
+    height: 2vw;
     font-size: 1vw;
-    border-radius: 2.5vw;
-    margin: 0 0 1vw 0;
+    margin: 0.6vw 0;
+    line-height: 2vw;
+    border-radius: 1vw;
     background-color: var(--input-color);
     color: var(--foreground-text);
     font-family: 'genshin impact', Fallback, sans-serif;
 }
 
 .start:hover {
-    color: rgb(114, 191, 34);
-}
-
-.pause:hover,
-.closeMusic:hover {
-    color: rgb(205, 125, 116);
-}
-
-.clear:hover {
-    color: rgb(113, 176, 253);
+    color: rgb(255, 203, 50);
 }
 
 .start:active {
     color: rgba(255, 255, 255, 0.8);
-    background-color: rgb(114, 191, 34);
+    background-color: rgb(255, 203, 50);
 }
 
-.pause:active,
-.closeMusic:active {
+.pause:hover {
+    color: rgb(113, 176, 253);
+}
+
+.pause:active {
     color: rgba(255, 255, 255, 0.8);
-    background-color: rgb(205, 125, 116);
+    background-color: rgb(113, 176, 253);
+}
+
+.clear:hover {
+    color: rgb(205, 125, 116);
 }
 
 .clear:active {
     color: rgba(255, 255, 255, 0.8);
-    background-color: rgb(113, 176, 253);
+    background-color: rgb(205, 125, 116);
+}
+
+.start::before, .pause::before, .clear::before {
+    float: left;
+    width: 1.4vw;
+    height: 1.4vw;
+    border-radius: 100%;
+    margin: 0.3vw 0 0 0.4vw;
+    background-color: rgb(49, 49, 49);
+}
+
+.start::before {
+    content: '';
+    box-shadow: 0 0 0 0.35vw rgb(49, 49, 49) inset,
+    0 0 0 0.45vw rgb(255, 203, 50) inset,
+    0 0 0 0.7vw rgb(49, 49, 49) inset;
+}
+
+.pause::before {
+    content: '\2716';
+    line-height: 1.55vw;
+    color: rgb(56, 161, 228);
+}
+
+.clear::before {
+    content: '\25C7';
+    font-weight: 900;
+    line-height: 1.55vw;
+    color: rgb(205, 125, 116);
+}
+
+.line0-1, .line0-2 {
+	border: 0;
+	margin: 0.1vw 2vw;
+	box-shadow: 0 0 0 0.06vw rgb(81, 84, 93);
 }

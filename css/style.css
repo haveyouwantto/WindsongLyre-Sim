@@ -1,31 +1,38 @@
 :root {
+    --animation-color: rgb(144, 249, 227);
     --background-color: rgb(224, 223, 209);
     --background-color-hover1: rgb(144, 249, 227);
     --background-color-hover2: rgba(144, 249, 227, 0.8);
     --box-shadow-color1: rgb(212, 212, 196);
     --box-shadow-color2: rgb(223, 223, 198);
+    --note-color: rgb(88, 153, 144);
+}
+
+@font-face {
+    font-family:'genshin impact';
+    src: url('zh-cn.ttf') format('truetype');
 }
 
 @keyframes animation1 {
-    0% {transform: scale(1.2);border: 0.3vw solid #90F9E3;opacity: 0.8;}
-    100% {transform: scale(2);border: 0 solid #90F9E3;opacity: 0.0;}
+    0% {transform: scale(1.2);border: 0.3vw solid var(--animation-color); opacity: 0.8;}
+    100% {transform: scale(2);border: 0 solid var(--animation-color); opacity: 0.0;}
 }
 
 @keyframes animation2 {
-    0% {transform: scale(1.2);border: 0.3vw solid #90F9E3;opacity: 0.8;}
-    100% {transform: scale(2);border: 0 solid #90F9E3;opacity: 0.0;}
+    0% {transform: scale(1.2);border: 0.3vw solid var(--animation-color); opacity: 0.8;}
+    100% {transform: scale(2);border: 0 solid var(--animation-color); opacity: 0.0;}
 }
 
 body {
     background: url('../img/bg.png') no-repeat center fixed;
-    background-size: cover;
     user-select: none;
+    background-size: cover;
 }
 
 .key {
+    border: 0px;
     min-width: 5vw;
     min-height: 5vw;
-    border: 0px;
     border-radius: 999px;
     background-color: var(--background-color);
     box-shadow: 0 0 0.1vw 0.4vw var(--box-shadow-color1),
@@ -33,10 +40,10 @@ body {
 }
 
 .text {
-    display: inline-block;
     font-size: 1.2vw;
     margin-top: 3.2vw;
-    color: #969478;
+    display: inline-block;
+    color: rgb(150, 148, 120);
     font-family: 'genshin impact', Fallback, sans-serif;
 }
 
@@ -49,24 +56,24 @@ body {
 .triangle::after,
 .triangleTop,
 .triangleBottom {
-    display: inherit;
-    position: absolute;
-    content: "";
     width: 0;
     height: 0;
+    content: "";
+    display: inherit;
+    position: absolute;
     border-style: solid;
 }
 
 .triangle::before {
-    right: calc(100% - 2.2vw);
     top: calc(50% - 0.5vw);
+    right: calc(100% - 2.2vw);
     border-width: 0.5vw 0.5vw 0.5vw 0;
     border-color: transparent var(--background-color) transparent transparent;
 }
 
 .triangle::after {
-    left: calc(100% - 2.2vw);
     top: calc(50% - 0.5vw);
+    left: calc(100% - 2.2vw);
     border-width: 0.5vw 0 0.5vw 0.5vw;
     border-color: transparent transparent transparent var(--background-color);
 }
@@ -126,11 +133,11 @@ body {
 }
 
 .IDspread {
-    position: absolute;
     top: 1.75vw;
     left: 1.78vw;
     min-width: 5vw;
     min-height: 5vw;
+    position: absolute;
     border-radius: 100%;
     pointer-events: none;
 }
@@ -144,9 +151,9 @@ body {
 }
 
 #keyboard {
-    width: min-content;
-    position: fixed;
     bottom: 5vh;
+    position: fixed;
+    width: min-content;
 }
 
 .location {
@@ -156,11 +163,11 @@ body {
 
 .clef,
 .clef0 {
-    text-align: center;
-    display: inline-block;
+    font-size: 5vw;
     min-width: 5vw;
     min-height: 5vw;
-    font-size: 5vw;
+    text-align: center;
+    display: inline-block;
     color: rgba(255, 255, 255, 0.7);
 }
 
@@ -175,14 +182,14 @@ body {
 .line1-1, .line1-2, .line1-3, .line1-4, .line1-5,
 .line2-1, .line2-2, .line2-3, .line2-4, .line2-5,
 .line3-1, .line3-2, .line3-3, .line3-4, .line3-5 {
+    left: 7vw;
+    z-index: -1;
+    width: 64.2vw;
+    height: 0.05vw;
     position: absolute;
     display: inline-block;
-    left: 7vw;
-    height: 0.05vw;
-    width: 64.2vw;
     border-color: rgba(0, 0, 0, 0);
     background-color: rgba(255, 255, 255, 0.1);
-    z-index: -1;
 }
 
 .line1-1 {bottom: calc(100% - 3.2vw);}
@@ -205,23 +212,23 @@ body {
 
 .note1, .note2, .note3, .note4,
 .note5, .note6, .note7, .note8, .note9 {
-    pointer-events: none;
-    color: #589990;
     position: absolute;
+    pointer-events: none;
     display: inline-block;
-    text-shadow: 0 0 0.1vw, 0 0 0.1vw;
     transform: scale(1, 1.2);
+    color: var(--note-color);
+    text-shadow: 0 0 0.1vw, 0 0 0.1vw;
 }
 .note1, .note2, .note3,
 .note5, .note6, .note7, .note8 {
+    left: 3.1vw;
     font-size: 3.4vw;
     font-weight: 900;
-    left: 3.1vw;
 }
 
 .note4, .note9 {
-    font-size: 6vw;
     left: 3.2vw;
+    font-size: 6vw;
 }
 
 .note1 {top: 0.85vw;}
@@ -233,8 +240,3 @@ body {
 .note7 {top: 2.2vw;}
 .note8 {top: 2.75vw;}
 .note9 {top: -2.3vw;}
-
-@font-face {
-    font-family:'genshin impact';
-    src: url('zh-cn.ttf') format('truetype');
-}
