@@ -1,10 +1,12 @@
 :root {
     --input-color: #ede5d8;
-    --background-text: #d3bc8e;
+    --background-text1: #d3bc8e;
+    --background-text2: rgb(236,229,216);
     --foreground-text: #3b4255;
     --dialog-background-color: #3e4556;
     --dialog-shadow-color1: rgb(60, 67, 83);
     --dialog-shadow-color2: rgb(57, 62, 82);
+    --selection-color: rgb(172,157,127);
 }
 
 .music {
@@ -71,7 +73,7 @@
     padding: 0.6vw;
     margin: 0.8vw 2vw;
     word-break:break-all;
-    color: var(--background-text);
+    color: var(--background-text2);
     background-color: rgb(53, 61, 79);
     outline: 0.15vw solid rgb(93, 93, 95);
     font-family: 'genshin impact', Fallback, sans-serif;
@@ -112,12 +114,16 @@
     color: rgb(94, 108, 124);
 }
 
-.bpm:focus {
-    outline: none;
-}
-
 .textareaInput:focus {
     outline: 0.15vw solid rgb(93, 93, 95);
+}
+
+.textareaInput::selection {
+    background-color: var(--selection-color);
+}
+
+.bpm:focus {
+    outline: none;
 }
 
 .bpmText {
@@ -126,7 +132,7 @@
     font-size: 1vw;
     display: inline-block;
     margin: 0.6vw 0 0 2.5vw;
-    color: var(--background-text);
+    color: var(--background-text1);
 }
 
 .bpm {
