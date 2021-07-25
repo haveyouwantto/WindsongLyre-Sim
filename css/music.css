@@ -1,10 +1,11 @@
 :root {
     --input-color: #ede5d8;
-    --background-text: #d3bc8e;
+    --background-text: rgb(236,229,216);
     --foreground-text: #3b4255;
     --dialog-background-color: #3e4556;
     --dialog-shadow-color1: rgb(60, 67, 83);
     --dialog-shadow-color2: rgb(57, 62, 82);
+    --selection-color: rgb(172,157,127);
 }
 
 .music {
@@ -110,6 +111,10 @@
     text-align: center;
     line-height: 12.1vw;
     color: rgb(94, 108, 124);
+}
+
+.textareaInput::selection {
+    background-color: var(--selection-color);
 }
 
 .bpm:focus {
