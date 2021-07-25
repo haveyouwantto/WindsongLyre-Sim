@@ -49,20 +49,20 @@ function showTextarea() {
     }
 }
 
-// 检测回车事件
-function clickEnter(e) {
-    var theEvent = e || window.event;
-    var code = theEvent.keyCode || theEvent.which || theEvent.charCode;
-    if (code == 13) {
-        // 阻止事件的默认行为
-        e.preventDefault();
-        startMusic();
-    }
-}
+// // 检测回车事件
+// function clickEnter(e) {
+//     var theEvent = e || window.event;
+//     var code = theEvent.keyCode || theEvent.which || theEvent.charCode;
+//     if (code == 13) {
+//         // 阻止事件的默认行为
+//         e.preventDefault();
+//         startMusic();
+//     }
+// }
 
 for (let node of document.querySelectorAll('.key')) {
     node.addEventListener('click', e => {
-        if(show != -1)play(node.id, true);
+        if (show != -1) play(node.id, true);
     });
 }
 
@@ -127,7 +127,7 @@ function playSheet(string, i = 0) {
         for (delayNum in delay) newDelay[delayNum] = delay[delayNum];
         return;
     }
-    if (string[i] == '(') {
+    else if (string[i] == '(') {
         i++;
         while (string[i] != ')') {
             play(string[i].toLowerCase());
@@ -190,9 +190,9 @@ function startMusic() {
         let multiplier = 60 / bpm;
         for (delayNum in delay) newDelay[delayNum] = delay[delayNum] * multiplier;
         let input = document.getElementById("textareaInput").value;
-        if(input != "") {
+        if (input != "") {
             showTextarea();
-            playSheet(input);
+            playSheet(input.replaceAll('\n', ''));
         }
     }
 }
