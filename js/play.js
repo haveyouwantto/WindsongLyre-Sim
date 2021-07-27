@@ -126,8 +126,7 @@ function playSheet(string, i = 0) {
         stopped = false;
         for (delayNum in delay) newDelay[delayNum] = delay[delayNum];
         return;
-    }
-    else if (string[i] == '(') {
+    } else if (string[i] == '(') {
         i++;
         while (string[i] != ')') {
             play(string[i].toLowerCase());
@@ -145,9 +144,7 @@ function playSheet(string, i = 0) {
             group = getNewDelayTime(string, i);
             delayTime = group[0];
             i = group[1];
-            i++;
         }
-        console.log("\u5ef6\u8fdf: " + delayTime + "ms");
         setTimeout(playSheet, delayTime, string, i);
     }
 }
@@ -180,7 +177,6 @@ function getNewDelayTime(string, i) {
             newDelayTime += newDelay[string[++i]];
         } while (string[++i] == "+");
     }
-    i--;
     return [newDelayTime, i];
 }
 
