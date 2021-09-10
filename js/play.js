@@ -198,6 +198,6 @@ function pauseMusic() {
 }
 
 function clearMusic() {
-    document.getElementById("bpm").value = "";
+    stopped = true;
     document.getElementById("textareaInput").value = "";
 }
