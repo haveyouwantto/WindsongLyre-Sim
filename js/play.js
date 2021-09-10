@@ -41,7 +41,7 @@ var show = 1;
 function showTextarea() {
     let inputDiv = document.getElementById("input");
     if (show == -1) {
-        inputDiv.style = "display:none";
+        inputDiv.style = "display:none;";
         show = 1;
     } else {
         inputDiv.style = "display: inline-block";
@@ -61,9 +61,12 @@ function showTextarea() {
 // }
 
 for (let node of document.querySelectorAll('.key')) {
-    node.addEventListener('click', e => {
+    node.addEventListener('mousedown', e => {
         if (show != -1) play(node.id, true);
     });
+    // node.addEventListener('touchstart', e => {
+    //     if (show != -1) play(node.id, true);
+    // });
 }
 
 let notes = {};

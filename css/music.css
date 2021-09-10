@@ -61,6 +61,7 @@
     0 0 0.1vw 0.3vw var(--dialog-shadow-color1),
     0 0 0.1vw 0.6vw var(--dialog-shadow-color2),
     0 0 0 100vw rgba(0, 0, 0, 0.5);
+    animation: fadeIn 0.16s ease-in-out 0s;
 }
 
 .textareaInput {
