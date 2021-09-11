@@ -51,7 +51,6 @@
     width: 36vw;
     height: 22vw;
     z-index: 999;
-    display: none;
     position: fixed;
     top: calc(50% - 11vw);
     right: calc(50% - 18vw);
@@ -61,7 +60,17 @@
     0 0 0.1vw 0.3vw var(--dialog-shadow-color1),
     0 0 0.1vw 0.6vw var(--dialog-shadow-color2),
     0 0 0 100vw rgba(0, 0, 0, 0.5);
+    visibility: hidden;
+}
+
+.input-active {
     animation: fadeIn 0.16s ease-in-out 0s;
+    visibility: visible;
+}
+
+.input-inactive {
+    animation: fadeOut 0.16s ease-in-out 0s;
+    visibility: collapse;
 }
 
 .textareaInput {
