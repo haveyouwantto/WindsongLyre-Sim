@@ -28,7 +28,7 @@
 
 .music:active {
     background-color: var(--background-color-hover1);
-    box-shadow: 0 0 0.1vw 0.5vw var(--background-color-hover2);
+    box-shadow: 0 0 0.1vw 0.6vw var(--background-color-hover2);
 }
 
 .musicClef {
@@ -70,7 +70,7 @@
 
 .input-inactive {
     animation: fadeOut 0.16s ease-in-out 0s;
-    visibility: collapse;
+    visibility: hidden;
 }
 
 .textareaInput {

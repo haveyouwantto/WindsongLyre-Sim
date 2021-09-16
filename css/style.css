@@ -29,6 +29,10 @@ body {
     0 0 0.1vw 0.6vw var(--box-shadow-color2);
 }
 
+.key-press {
+    /* animation: press 0.2s ease-in-out; */
+}
+
 .text {
     font-size: 1.2vw;
     margin-top: 3.2vw;
@@ -85,8 +89,8 @@ body {
 .triangle:active .key,
 .key-press .key {
     background-color: var(--background-color-hover1);
-    box-shadow: 0 0 0.1vw 0.3vw var(--background-color-hover1) inset,
-    0 0 0.1vw 0.5vw var(--background-color-hover2);
+    box-shadow: 0 0 0.1vw 0.6vw var(--background-color-hover1) inset,
+    0 0 0.1vw 0.6vw var(--background-color-hover2);
 }
 
 .triangle:active .text, .key-press .text,
