@@ -208,6 +208,8 @@
     background-color: var(--input-color);
     color: var(--foreground-text);
     font-family: 'genshin impact', Fallback, sans-serif;
+    transition-property: color;
+    transition-duration: 0.15s;
 }
 
 .start:hover {

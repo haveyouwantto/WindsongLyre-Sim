@@ -73,6 +73,12 @@ for (let node of document.querySelectorAll('.key')) {
 
 let notes = {};
 let lastTime = Date.now();
+
+let stopped = false;
+let bpm = 60;
+let delay = [4000, 2000, 1000, 500, 250, 125, 62.5, 31.25];// 60BPM
+let newDelay = [];// ???BPM
+
 document.onkeydown = e => {
     let note = keyMap[e.key];
     if (!notes[note] && show != -1) {
@@ -85,6 +91,11 @@ document.onkeyup = e => {
         release(e.key);
     }
 }
+
+let bpmField = document.getElementById("bpm");
+bpmField.addEventListener('focusout', () => {
+    updateBpm(bpmField.value);
+});
 
 function removeID(spread) {
     spread.addEventListener("animationend", function () {
@@ -118,11 +129,6 @@ function release(key) {
         document.getElementById(key).parentNode.classList.remove('key-press');
     }
 }
-
-let stopped = false;
-let bpm = 60;
-let delay = [4000, 2000, 1000, 500, 250, 125, 62.5, 31.25];// 60BPM
-let newDelay = [];// ???BPM
 
 function playSheet(string, i = 0) {
     let delayTime = newDelay[3];
@@ -189,13 +195,19 @@ function startMusic() {
     stopped = false;
     bpm = document.getElementById("bpm").value;
     if (bpm != "") {
-        let multiplier = 60 / bpm;
-        for (delayNum in delay) newDelay[delayNum] = delay[delayNum] * multiplier;
-        let input = document.getElementById("textareaInput").value;
         if (input != "") {
+            updateBpm(bpm);
+            let input = document.getElementById("textareaInput").value;
             showTextarea();
             playSheet(input.replaceAll('\n', ''));
         }
+    }
+}
+
+function updateBpm(bpm) {
+    let multiplier = 60 / bpm;
+    for (delayNum in delay) {
+        newDelay[delayNum] = delay[delayNum] * multiplier;
     }
 }
 
