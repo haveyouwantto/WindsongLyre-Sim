@@ -125,29 +125,6 @@ body {
     border-color: var(--background-color-hover1) transparent transparent transparent;
 }
 
-.triangle .key,
-.key-press .key,
-.triangle .text, .key-press .text,
-.triangle .note1, .key-press .note1,
-.triangle .note2, .key-press .note2,
-.triangle .note3, .key-press .note3,
-.triangle .note4, .key-press .note4,
-.triangle .note5, .key-press .note5,
-.triangle .note6, .key-press .note6,
-.triangle .note7, .key-press .note7,
-.triangle .note8, .key-press .note8,
-.triangle .note9, .key-press .note9,
-.triangle::after,
-.key-press::after,
-.triangle::before,
-.key-press::before,
-.triangle .triangleTop,
-.key-press .triangleTop,
-.triangle .triangleBottom,
-.key-press .triangleBottom {
-	transition: all 0.15s;
-}
-
 .IDspread {
     top: 1.75vw;
     left: 1.78vw;
