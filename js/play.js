@@ -30,12 +30,15 @@ let fallback = false;
 
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
 let aCtx = new AudioContext();
+let compressor = new DynamicsCompressorNode(aCtx);
 let masterVolume = aCtx.createGain();
 masterVolume.gain.value = 0.5;
-masterVolume.connect(aCtx.destination);
+masterVolume.connect(compressor);
+compressor.connect(aCtx.destination);
 
 function playSound(buffer) {
     if (fallback) {
+        buffer.volume = 0.5;
         buffer.currentTime = 0;
         buffer.play();
     } else {
@@ -46,9 +49,9 @@ function playSound(buffer) {
     }
 }
 
-function loadingAudio() {
+function loadAudio(id="windsong_lyre") {
     for (let key in keyMap) {
-        let url = 'audio/' + keyMap[key] + '.mp3';
+        let url = `instruments/${id}/audio/${keyMap[key]}.mp3`;
         var xhr = new XMLHttpRequest();
         xhr.open('GET', url, true);
         xhr.responseType = 'arraybuffer';
@@ -57,7 +60,8 @@ function loadingAudio() {
         };
         xhr.onerror = function () {
             fallback = true;
-            audioMap.set(key, new Audio(url));
+            let audio = new Audio(url);
+            audioMap.set(key, audio);
         };
         xhr.send();
     }
