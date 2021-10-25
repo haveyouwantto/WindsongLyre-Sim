@@ -31,10 +31,13 @@ let fallback = false;
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
 let aCtx = new AudioContext();
 let compressor = new DynamicsCompressorNode(aCtx);
+let volume = aCtx.createGain();
+volume.gain.value = 0.5;
 let masterVolume = aCtx.createGain();
-masterVolume.gain.value = 0.5;
-masterVolume.connect(compressor);
-compressor.connect(aCtx.destination);
+masterVolume.gain.value = 1;
+volume.connect(compressor);
+compressor.connect(masterVolume);
+masterVolume.connect(aCtx.destination);
 
 function playSound(buffer) {
     if (fallback) {
@@ -44,7 +47,7 @@ function playSound(buffer) {
     } else {
         let source = aCtx.createBufferSource();
         source.buffer = buffer;
-        source.connect(masterVolume);
+        source.connect(volume);
         source.start();
     }
 }
@@ -60,6 +63,7 @@ function loadAudio(id="windsong_lyre") {
         };
         xhr.onerror = function () {
             fallback = true;
+            console.warn('XHR failed. Using fallback implementation.')
             let audio = new Audio(url);
             audioMap.set(key, audio);
         };
