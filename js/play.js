@@ -24,27 +24,32 @@ let keyMap = {
     "m": "7-",
 };
 
-var playingAudioMap = new Map();
 var audioMap = new Map();
 
 
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
 let aCtx = new AudioContext();
+let masterVolume = aCtx.createGain();
+masterVolume.gain.value = 0.5;
+masterVolume.connect(aCtx.destination);
 
-function playSound(audio) {
-    // console.log(audio);
-    // var source = aCtx.createMediaElementSource(audio); 
-    // console.log(source);
-    
-    // source.connect(aCtx.destination);
-    audio.currentTime = 0;
-    audio.play();
+function playSound(buffer) {
+    let source = aCtx.createBufferSource();
+    source.buffer = buffer;
+    source.connect(masterVolume);
+    source.start();
 }
 
 function loadingAudio() {
     for (let key in keyMap) {
-        let audio = new Audio('audio/' + keyMap[key] + '.mp3');
-        audioMap.set(key, audio);
+        let url = 'audio/' + keyMap[key] + '.mp3';
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', url, true);
+        xhr.responseType = 'arraybuffer';
+        xhr.onload = function() {
+            aCtx.decodeAudioData(this.response, buffer => audioMap.set(key,buffer));
+        };
+        xhr.send();
     }
 }
 
@@ -80,8 +85,7 @@ function play(key, autoRelease = true) {
         } else {
             spread.setAttribute('id', 'spread1')
         };
-        playingAudioMap.set(file, audioMap.get(file));
-        
+
         playSound(audioMap.get(key));
         removeID(spread);
         if (autoRelease) setTimeout(release, 100, key);
