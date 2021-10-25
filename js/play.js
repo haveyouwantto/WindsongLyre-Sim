@@ -24,27 +24,27 @@ let keyMap = {
     "m": "7-",
 };
 
-var musicNum = new Map();
-var musicKey = new Map();
+var playingAudioMap = new Map();
 var audioMap = new Map();
 
 
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
 let aCtx = new AudioContext();
-function playSound(buffer) {
-    var source = aCtx.createBufferSource(); // creates a sound source
-    source.buffer = buffer;                    // tell the source which sound to play
-    source.connect(aCtx.destination);       // connect the source to the context's destination (the speakers)
-    source.start(0);                           // play the source now
-                                               // note: on older systems, may have to use deprecated noteOn(time);
-  }
+
+function playSound(audio) {
+    // console.log(audio);
+    // var source = aCtx.createMediaElementSource(audio); 
+    // console.log(source);
+    
+    // source.connect(aCtx.destination);
+    audio.currentTime = 0;
+    audio.play();
+}
 
 function loadingAudio() {
-    for (let e in keyMap) {
-        let newAudio = new Audio('audio/' + keyMap[e] + '.mp3');
-        newAudio.setAttribute('id', 'audio');
-        musicNum.set(e, keyMap[e]);
-        musicKey.set(keyMap[e], newAudio);
+    for (let key in keyMap) {
+        let audio = new Audio('audio/' + keyMap[key] + '.mp3');
+        audioMap.set(key, audio);
     }
 }
 
@@ -80,11 +80,9 @@ function play(key, autoRelease = true) {
         } else {
             spread.setAttribute('id', 'spread1')
         };
-        audioMap.set(file, musicKey.get(file));
-        audioMap.get(file).currentTime = 0;
-        audioMap.get(file).play();
+        playingAudioMap.set(file, audioMap.get(file));
         
-        //playSound(audioMap.get(file));
+        playSound(audioMap.get(key));
         removeID(spread);
         if (autoRelease) setTimeout(release, 100, key);
     }
