@@ -28,6 +28,17 @@ var musicNum = new Map();
 var musicKey = new Map();
 var audioMap = new Map();
 
+
+window.AudioContext = window.AudioContext || window.webkitAudioContext;
+let aCtx = new AudioContext();
+function playSound(buffer) {
+    var source = aCtx.createBufferSource(); // creates a sound source
+    source.buffer = buffer;                    // tell the source which sound to play
+    source.connect(aCtx.destination);       // connect the source to the context's destination (the speakers)
+    source.start(0);                           // play the source now
+                                               // note: on older systems, may have to use deprecated noteOn(time);
+  }
+
 function loadingAudio() {
     for (let e in keyMap) {
         let newAudio = new Audio('audio/' + keyMap[e] + '.mp3');
@@ -35,40 +46,6 @@ function loadingAudio() {
         musicNum.set(e, keyMap[e]);
         musicKey.set(keyMap[e], newAudio);
     }
-}
-
-var show = true;
-function showTextarea() {
-    let inputDiv = document.getElementById("input");
-    if (show == false) {
-        inputDiv.classList.remove('input-active')
-        inputDiv.classList.add('input-inactive')
-        show = true;
-    } else {
-        inputDiv.classList.remove('input-inactive')
-        inputDiv.classList.add('input-active')
-        show = false;
-    }
-}
-
-// // 检测回车事件
-// function clickEnter(e) {
-//     var theEvent = e || window.event;
-//     var code = theEvent.keyCode || theEvent.which || theEvent.charCode;
-//     if (code == 13) {
-//         // 阻止事件的默认行为
-//         e.preventDefault();
-//         startMusic();
-//     }
-// }
-
-for (let node of document.querySelectorAll('.key')) {
-    node.addEventListener('mousedown', e => {
-        if (show != -1) play(node.id, true);
-    });
-    // node.addEventListener('touchstart', e => {
-    //     if (show != -1) play(node.id, true);
-    // });
 }
 
 let notes = {};
@@ -92,17 +69,6 @@ document.onkeyup = e => {
     }
 }
 
-let bpmField = document.getElementById("bpm");
-bpmField.addEventListener('focusout', () => {
-    updateBpm(bpmField.value);
-});
-
-function removeID(spread) {
-    spread.addEventListener("animationend", function () {
-        spread.removeAttribute('id');
-    }, false);
-}
-
 function play(key, autoRelease = true) {
     let file = keyMap[key];
     if (file != null) {
@@ -117,6 +83,8 @@ function play(key, autoRelease = true) {
         audioMap.set(file, musicKey.get(file));
         audioMap.get(file).currentTime = 0;
         audioMap.get(file).play();
+        
+        //playSound(audioMap.get(file));
         removeID(spread);
         if (autoRelease) setTimeout(release, 100, key);
     }
