@@ -25,6 +25,7 @@ let keyMap = {
 };
 
 var audioMap = new Map();
+let fallback = false;
 
 
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -34,10 +35,15 @@ masterVolume.gain.value = 0.5;
 masterVolume.connect(aCtx.destination);
 
 function playSound(buffer) {
-    let source = aCtx.createBufferSource();
-    source.buffer = buffer;
-    source.connect(masterVolume);
-    source.start();
+    if (fallback) {
+        buffer.currentTime = 0;
+        buffer.play();
+    } else {
+        let source = aCtx.createBufferSource();
+        source.buffer = buffer;
+        source.connect(masterVolume);
+        source.start();
+    }
 }
 
 function loadingAudio() {
@@ -46,8 +52,12 @@ function loadingAudio() {
         var xhr = new XMLHttpRequest();
         xhr.open('GET', url, true);
         xhr.responseType = 'arraybuffer';
-        xhr.onload = function() {
-            aCtx.decodeAudioData(this.response, buffer => audioMap.set(key,buffer));
+        xhr.onload = function () {
+            aCtx.decodeAudioData(this.response, buffer => audioMap.set(key, buffer));
+        };
+        xhr.onerror = function () {
+            fallback = true;
+            audioMap.set(key, new Audio(url));
         };
         xhr.send();
     }
@@ -75,9 +85,9 @@ document.onkeyup = e => {
 }
 
 function play(key, autoRelease = true) {
-    let file = keyMap[key];
-    if (file != null) {
-        notes[file] = true;
+    let note = keyMap[key];
+    if (note != null) {
+        notes[note] = true;
         document.getElementById(key).parentNode.classList.add('key-press');
         let spread = document.getElementById(key).parentNode.childNodes[1];
         if (spread.getAttribute('id') == 'spread1') {
@@ -93,9 +103,9 @@ function play(key, autoRelease = true) {
 }
 
 function release(key) {
-    let file = keyMap[key];
-    if (file != null) {
-        notes[file] = false;
+    let note = keyMap[key];
+    if (note != null) {
+        notes[note] = false;
         document.getElementById(key).parentNode.classList.remove('key-press');
     }
 }
