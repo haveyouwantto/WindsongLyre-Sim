@@ -11,10 +11,19 @@
 </head>
 
 <body onload='loadAudio()'>
-    <div class="music" onclick="showTextarea()"><span class="musicClef">&#119051;</span></div>
+    <div class="music" onclick="showTextarea()"><span class="musicClef musicColor">&#119051;</span></div>
     <div class="input" id="input">
         <span class="bpmText">BPM: </span>
         <input class="bpm" id="bpm" type="text" value="60" maxlength="4" placeholder="&#x8BF7;&#x8F93;&#x5165;BPM" oninput="value=value.replace(/[^\d]/g,'')">
+        <div class="choice" id="choice">
+            <span onclick="choice(id)" class="musicalInstrument checked" id="windsongLyre"></span>
+            <span onclick="choice(id)" class="musicalInstrument" id="otherLyre"></span>
+            <span onclick="choice(id)" class="musicalInstrument" id="other"></span>
+            <span onclick="choice(id)" class="musicalInstrument" id="other"></span>
+            <span onclick="choice(id)" class="musicalInstrument" id="other"></span>
+            <span onclick="choice(id)" class="musicalInstrument" id="other"></span>
+            <span onclick="choice(id)" class="musicalInstrument" id="other"></span>
+        </div>
         <span class="closeMusic" onclick="showTextarea()">&#11020;</span>
 		<hr class="line0-1" />
         <textarea class="textareaInput" id="textareaInput" placeholder="&#x8BF7;&#x8F93;&#x5165;&#x4E50;&#x8C31;" spellcheck="false"></textarea>
@@ -40,8 +49,8 @@
                     <div class="IDspread"></div>
                     <div class="triangleTop"></div>
                     <button class="key" id="q">
-                        <span class="note2">&#119062;</span>
-                        <span class="note4">&#119133;</span>
+                        <span class="note2 musicColor">&#119062;</span>
+                        <span class="note4 musicColor">&#119133;</span>
                         <span class="text">do</span>
                     </button>
                     <div class="triangleBottom"></div>
@@ -50,8 +59,8 @@
                     <div class="IDspread"></div>
                     <div class="triangleTop"></div>
                     <button class="key" id="w">
-                        <span class="note3">&#119062;</span>
-                        <span class="note4">&#119133;</span>
+                        <span class="note3 musicColor">&#119062;</span>
+                        <span class="note4 musicColor">&#119133;</span>
                         <span class="text">re</span>
                     </button>
                     <div class="triangleBottom"></div>
@@ -60,9 +69,9 @@
                     <div class="IDspread"></div>
                     <div class="triangleTop"></div>
                     <button class="key" id="e">
-                        <span class="note2">&#119062;</span>
-                        <span class="note3">&#119062;</span>
-                        <span class="note4">&#119133;</span>
+                        <span class="note2 musicColor">&#119062;</span>
+                        <span class="note3 musicColor">&#119062;</span>
+                        <span class="note4 musicColor">&#119133;</span>
                         <span class="text">mi</span>
                     </button>
                     <div class="triangleBottom"></div>
@@ -71,9 +80,9 @@
                     <div class="IDspread"></div>
                     <div class="triangleTop"></div>
                     <button class="key" id="r">
-                        <span class="note1">&#119062;</span>
-                        <span class="note3">&#119062;</span>
-                        <span class="note4">&#119133;</span>
+                        <span class="note1 musicColor">&#119062;</span>
+                        <span class="note3 musicColor">&#119062;</span>
+                        <span class="note4 musicColor">&#119133;</span>
                         <span class="text">fa</span>
                     </button>
                     <div class="triangleBottom"></div>
@@ -82,10 +91,10 @@
                     <div class="IDspread"></div>
                     <div class="triangleTop"></div>
                     <button class="key" id="t">
-                        <span class="note1">&#119062;</span>
-                        <span class="note2">&#119062;</span>
-                        <span class="note3">&#119062;</span>
-                        <span class="note4">&#119133;</span>
+                        <span class="note1 musicColor">&#119062;</span>
+                        <span class="note2 musicColor">&#119062;</span>
+                        <span class="note3 musicColor">&#119062;</span>
+                        <span class="note4 musicColor">&#119133;</span>
                         <span class="text">so</span>
                     </button>
                     <div class="triangleBottom"></div>
@@ -94,10 +103,10 @@
                     <div class="IDspread"></div>
                     <div class="triangleTop"></div>
                     <button class="key" id="y">
-                        <span class="note5">&#119062;</span>
-                        <span class="note7">&#119062;</span>
-                        <span class="note8">&#119062;</span>
-                        <span class="note9">&#119133;</span>
+                        <span class="note5 musicColor">&#119062;</span>
+                        <span class="note7 musicColor">&#119062;</span>
+                        <span class="note8 musicColor">&#119062;</span>
+                        <span class="note9 musicColor">&#119133;</span>
                         <span class="text">la</span>
                     </button>
                     <div class="triangleBottom"></div>
@@ -106,11 +115,11 @@
                     <div class="IDspread"></div>
                     <div class="triangleTop"></div>
                     <button class="key" id="u">
-                        <span class="note5">&#119062;</span>
-                        <span class="note6">&#119062;</span>
-                        <span class="note7">&#119062;</span>
-                        <span class="note8">&#119062;</span>
-                        <span class="note9">&#119133;</span>
+                        <span class="note5 musicColor">&#119062;</span>
+                        <span class="note6 musicColor">&#119062;</span>
+                        <span class="note7 musicColor">&#119062;</span>
+                        <span class="note8 musicColor">&#119062;</span>
+                        <span class="note9 musicColor">&#119133;</span>
                         <span class="text">ti</span>
                     </button>
                     <div class="triangleBottom"></div>
@@ -129,8 +138,8 @@
                     <div class="IDspread"></div>
                     <div class="triangleTop"></div>
                     <button class="key" id="a">
-                        <span class="note2">&#119062;</span>
-                        <span class="note4">&#119133;</span>
+                        <span class="note2 musicColor">&#119062;</span>
+                        <span class="note4 musicColor">&#119133;</span>
                         <span class="text">do</span>
                     </button>
                     <div class="triangleBottom"></div>
@@ -139,8 +148,8 @@
                     <div class="IDspread"></div>
                     <div class="triangleTop"></div>
                     <button class="key" id="s">
-                        <span class="note3">&#119062;</span>
-                        <span class="note4">&#119133;</span>
+                        <span class="note3 musicColor">&#119062;</span>
+                        <span class="note4 musicColor">&#119133;</span>
                         <span class="text">re</span>
                     </button>
                     <div class="triangleBottom"></div>
@@ -149,9 +158,9 @@
                     <div class="IDspread"></div>
                     <div class="triangleTop"></div>
                     <button class="key" id="d">
-                        <span class="note2">&#119062;</span>
-                        <span class="note3">&#119062;</span>
-                        <span class="note4">&#119133;</span>
+                        <span class="note2 musicColor">&#119062;</span>
+                        <span class="note3 musicColor">&#119062;</span>
+                        <span class="note4 musicColor">&#119133;</span>
                         <span class="text">mi</span>
                     </button>
                     <div class="triangleBottom"></div>
@@ -160,9 +169,9 @@
                     <div class="IDspread"></div>
                     <div class="triangleTop"></div>
                     <button class="key" id="f">
-                        <span class="note1">&#119062;</span>
-                        <span class="note3">&#119062;</span>
-                        <span class="note4">&#119133;</span>
+                        <span class="note1 musicColor">&#119062;</span>
+                        <span class="note3 musicColor">&#119062;</span>
+                        <span class="note4 musicColor">&#119133;</span>
                         <span class="text">fa</span>
                     </button>
                     <div class="triangleBottom"></div>
@@ -171,10 +180,10 @@
                     <div class="IDspread"></div>
                     <div class="triangleTop"></div>
                     <button class="key" id="g">
-                        <span class="note1">&#119062;</span>
-                        <span class="note2">&#119062;</span>
-                        <span class="note3">&#119062;</span>
-                        <span class="note4">&#119133;</span>
+                        <span class="note1 musicColor">&#119062;</span>
+                        <span class="note2 musicColor">&#119062;</span>
+                        <span class="note3 musicColor">&#119062;</span>
+                        <span class="note4 musicColor">&#119133;</span>
                         <span class="text">so</span>
                     </button>
                     <div class="triangleBottom"></div>
@@ -183,10 +192,10 @@
                     <div class="IDspread"></div>
                     <div class="triangleTop"></div>
                     <button class="key" id="h">
-                        <span class="note5">&#119062;</span>
-                        <span class="note7">&#119062;</span>
-                        <span class="note8">&#119062;</span>
-                        <span class="note9">&#119133;</span>
+                        <span class="note5 musicColor">&#119062;</span>
+                        <span class="note7 musicColor">&#119062;</span>
+                        <span class="note8 musicColor">&#119062;</span>
+                        <span class="note9 musicColor">&#119133;</span>
                         <span class="text">la</span>
                     </button>
                     <div class="triangleBottom"></div>
@@ -195,11 +204,11 @@
                     <div class="IDspread"></div>
                     <div class="triangleTop"></div>
                     <button class="key" id="j">
-                        <span class="note5">&#119062;</span>
-                        <span class="note6">&#119062;</span>
-                        <span class="note7">&#119062;</span>
-                        <span class="note8">&#119062;</span>
-                        <span class="note9">&#119133;</span>
+                        <span class="note5 musicColor">&#119062;</span>
+                        <span class="note6 musicColor">&#119062;</span>
+                        <span class="note7 musicColor">&#119062;</span>
+                        <span class="note8 musicColor">&#119062;</span>
+                        <span class="note9 musicColor">&#119133;</span>
                         <span class="text">ti</span>
                     </button>
                     <div class="triangleBottom"></div>
@@ -218,8 +227,8 @@
                     <div class="IDspread"></div>
                     <div class="triangleTop"></div>
                     <button class="key" id="z">
-                        <span class="note2">&#119062;</span>
-                        <span class="note4">&#119133;</span>
+                        <span class="note2 musicColor">&#119062;</span>
+                        <span class="note4 musicColor">&#119133;</span>
                         <span class="text">do</span>
                     </button>
                     <div class="triangleBottom"></div>
@@ -228,8 +237,8 @@
                     <div class="IDspread"></div>
                     <div class="triangleTop"></div>
                     <button class="key" id="x">
-                        <span class="note3">&#119062;</span>
-                        <span class="note4">&#119133;</span>
+                        <span class="note3 musicColor">&#119062;</span>
+                        <span class="note4 musicColor">&#119133;</span>
                         <span class="text">re</span>
                     </button>
                     <div class="triangleBottom"></div>
@@ -238,9 +247,9 @@
                     <div class="IDspread"></div>
                     <div class="triangleTop"></div>
                     <button class="key" id="c">
-                        <span class="note2">&#119062;</span>
-                        <span class="note3">&#119062;</span>
-                        <span class="note4">&#119133;</span>
+                        <span class="note2 musicColor">&#119062;</span>
+                        <span class="note3 musicColor">&#119062;</span>
+                        <span class="note4 musicColor">&#119133;</span>
                         <span class="text">mi</span>
                     </button>
                     <div class="triangleBottom"></div>
@@ -249,9 +258,9 @@
                     <div class="IDspread"></div>
                     <div class="triangleTop"></div>
                     <button class="key" id="v">
-                        <span class="note1">&#119062;</span>
-                        <span class="note3">&#119062;</span>
-                        <span class="note4">&#119133;</span>
+                        <span class="note1 musicColor">&#119062;</span>
+                        <span class="note3 musicColor">&#119062;</span>
+                        <span class="note4 musicColor">&#119133;</span>
                         <span class="text">fa</span>
                     </button>
                     <div class="triangleBottom"></div>
@@ -260,10 +269,10 @@
                     <div class="IDspread"></div>
                     <div class="triangleTop"></div>
                     <button class="key" id="b">
-                        <span class="note1">&#119062;</span>
-                        <span class="note2">&#119062;</span>
-                        <span class="note3">&#119062;</span>
-                        <span class="note4">&#119133;</span>
+                        <span class="note1 musicColor">&#119062;</span>
+                        <span class="note2 musicColor">&#119062;</span>
+                        <span class="note3 musicColor">&#119062;</span>
+                        <span class="note4 musicColor">&#119133;</span>
                         <span class="text">so</span>
                     </button>
                     <div class="triangleBottom"></div>
@@ -272,10 +281,10 @@
                     <div class="IDspread"></div>
                     <div class="triangleTop"></div>
                     <button class="key" id="n">
-                        <span class="note5">&#119062;</span>
-                        <span class="note7">&#119062;</span>
-                        <span class="note8">&#119062;</span>
-                        <span class="note9">&#119133;</span>
+                        <span class="note5 musicColor">&#119062;</span>
+                        <span class="note7 musicColor">&#119062;</span>
+                        <span class="note8 musicColor">&#119062;</span>
+                        <span class="note9 musicColor">&#119133;</span>
                         <span class="text">la</span>
                     </button>
                     <div class="triangleBottom"></div>
@@ -284,11 +293,11 @@
                     <div class="IDspread"></div>
                     <div class="triangleTop"></div>
                     <button class="key" id="m">
-                        <span class="note5">&#119062;</span>
-                        <span class="note6">&#119062;</span>
-                        <span class="note7">&#119062;</span>
-                        <span class="note8">&#119062;</span>
-                        <span class="note9">&#119133;</span>
+                        <span class="note5 musicColor">&#119062;</span>
+                        <span class="note6 musicColor">&#119062;</span>
+                        <span class="note7 musicColor">&#119062;</span>
+                        <span class="note8 musicColor">&#119062;</span>
+                        <span class="note9 musicColor">&#119133;</span>
                         <span class="text">ti</span>
                     </button>
                     <div class="triangleBottom"></div>
@@ -298,6 +307,7 @@
     </div>
     <script src="instruments/manifest.js"></script>
     <script src="js/play.js"></script>
+    <script src="js/switch.js"></script>
     <script src="js/ui.js"></script>
 </body>
 
