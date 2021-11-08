@@ -103,9 +103,7 @@ function play(key, autoRelease = true) {
         } else {
             spread.setAttribute('id', 'spread1')
         };
-
         playSound(audioMap.get(key));
-        removeID(spread);
         if (autoRelease) setTimeout(release, 100, key);
     }
 }

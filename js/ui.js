@@ -27,6 +27,7 @@ for (let node of document.querySelectorAll('.key')) {
     node.addEventListener('mousedown', e => {
         if (show != -1) play(node.id, true);
     });
+    removeID(node.parentNode.childNodes[1]);
     // node.addEventListener('touchstart', e => {
     //     if (show != -1) play(node.id, true);
     // });
