@@ -3,12 +3,9 @@
     --background-color: rgb(224, 223, 209);
     --background-color-hover1: rgb(144, 249, 227);
     --background-color-hover2: rgba(144, 249, 227, 0.8);
-    --background-color-hover1-2: rgb(221, 203, 161);
-    --background-color-hover2-2: rgba(221, 203, 161, 0.8);
     --box-shadow-color1: rgb(212, 212, 196);
     --box-shadow-color2: rgb(223, 223, 198);
     --note-color: rgb(88, 153, 144);
-    --note-color-2: rgb(173, 159, 146);
 }
 
 @font-face {
@@ -30,10 +27,6 @@ body {
     background-color: var(--background-color);
     box-shadow: 0 0 0.1vw 0.4vw var(--box-shadow-color1),
     0 0 0.1vw 0.7vw var(--box-shadow-color2);
-}
-
-.key-press {
-    /* animation: press 0.2s ease-in-out; */
 }
 
 .text {
@@ -91,8 +84,8 @@ body {
 
 .triangle:active .key,
 .key-press .key {
-    background-color: var(--background-color-hover1-2);
-    box-shadow: 0 0 0.1vw 0.5vw var(--background-color-hover2-2);
+    background-color: var(--background-color-hover1);
+    box-shadow: 0 0 0.1vw 0.5vw var(--background-color-hover2);
 }
 
 .triangle:active .text, .key-press .text,
@@ -110,22 +103,22 @@ body {
 
 .triangle:active::after,
 .key-press::after {
-    border-color: transparent transparent transparent var(--background-color-hover1-2);
+    border-color: transparent transparent transparent var(--background-color-hover1);
 }
 
 .triangle:active::before,
 .key-press::before {
-    border-color: transparent var(--background-color-hover1-2) transparent transparent;
+    border-color: transparent var(--background-color-hover1) transparent transparent;
 }
 
 .triangle:active .triangleTop,
 .key-press .triangleTop {
-    border-color: transparent transparent var(--background-color-hover1-2) transparent;
+    border-color: transparent transparent var(--background-color-hover1) transparent;
 }
 
 .triangle:active .triangleBottom,
 .key-press .triangleBottom {
-    border-color: var(--background-color-hover1-2) transparent transparent transparent;
+    border-color: var(--background-color-hover1) transparent transparent transparent;
 }
 
 .IDspread {
@@ -212,7 +205,6 @@ body {
     pointer-events: none;
     display: inline-block;
     transform: scale(1, 1.2);
-    color: var(--note-color);
     text-shadow: 0 0 0.1vw, 0 0 0.1vw;
 }
 .note1, .note2, .note3,

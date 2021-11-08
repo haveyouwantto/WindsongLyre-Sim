@@ -42,14 +42,6 @@
     display: inline-block;
 }
 
-.musicColor {
-    color:  var(--note-color);
-}
-
-.musicColor_2 {
-    color:  var(--note-color-2);
-}
-
 .musicClef:active {
     color: rgba(255, 255, 255, 0.8);
 }
@@ -182,6 +174,7 @@
     border-radius: 50%;
     background-size: cover;
     border: none;
+    background-color: #ede5d8;
 }
 
 .musicalInstrument:hover {
@@ -194,19 +187,6 @@
 
 .checked {
     background-color: #ede5d8;
-}
-
-#windsongLyre {
-    background-image: url(../img/WindsongLyre.png);
-}
-
-#otherLyre {
-    background-image: url(../img/test.png);
-}
-
-#other {
-    display: none;
-    background-image: url(../img/test.png);
 }
 
 .closeMusic {
@@ -324,4 +304,8 @@
 	border: 0;
 	margin: 0.1vw 2vw;
 	box-shadow: 0 0 0 0.06vw rgb(81, 84, 93);
+}
+
+.music-color {
+    color: var(--note-color);
 }
