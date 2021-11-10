@@ -309,3 +309,39 @@
 .music-color {
     color: var(--note-color);
 }
+
+.combo-box {
+    top: 2vw;
+    left: 2vw;
+    padding: 5px;
+    position: absolute;
+    border-radius: 999px;
+    color: var(--foreground-text);
+    min-width: 8vw;
+    background-color: var(--background-color);
+    font-family: 'genshin impact', Fallback, sans-serif;
+}
+
+.combo-items {
+    display: none;
+    background-color: var(--dialog-background-color);
+    color: var(--input-color);
+    border-radius: 1vw;
+    min-width: 8vw;
+    position: absolute;
+    padding: 2px;
+}
+
+.combo-box:hover .combo-items {
+    display: block;
+}
+
+.combo-box p {
+    margin: 2px;
+    padding: 5px;
+    border-radius: 999px;
+}
+
+.combo-box p:hover {
+    background-color: #4f5870;
+}
