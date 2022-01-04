@@ -12,5 +12,12 @@ let insts = {
         "color": "rgb(173, 159, 146)",
         "bg1": "rgb(221, 203, 161)",
         "bg2": "rgba(221, 203, 161, 0.8)"
+    },
+    "floral_zither_old": {
+        "id": "floral_zither_old",
+        "name": "镜花之琴(旧版)",
+        "color": "rgb(173, 159, 146)",
+        "bg1": "rgb(221, 203, 161)",
+        "bg2": "rgba(221, 203, 161, 0.8)"
     }
 };
