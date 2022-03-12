@@ -52,7 +52,9 @@ function playSound(buffer) {
     }
 }
 
-function loadAudio(id="windsong_lyre") {
+function loadAudio(id = "windsong_lyre") {
+    let loaded = 0;
+    onLoad(id);
     for (let key in keyMap) {
         let url = `instruments/${id}/audio/${keyMap[key]}.mp3`;
         var xhr = new XMLHttpRequest();
@@ -60,6 +62,10 @@ function loadAudio(id="windsong_lyre") {
         xhr.responseType = 'arraybuffer';
         xhr.onload = function () {
             aCtx.decodeAudioData(this.response, buffer => audioMap.set(key, buffer));
+            loaded++;
+            if (loaded == 21) {
+                onLoadComplete(id);
+            }
         };
         xhr.onerror = function () {
             fallback = true;
@@ -205,3 +211,10 @@ function clearMusic() {
     stopped = true;
     document.getElementById("textareaInput").value = "";
 }
+
+
+// TODO 添加加载提示
+
+function onLoad(instId) { }
+
+function onLoadComplete(instId) { }
