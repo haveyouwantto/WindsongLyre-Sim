@@ -6,11 +6,12 @@
     <link rel="stylesheet" type="text/css" href="css/animations.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/music.css">
+    <link rel="stylesheet" type="text/css" id="async" href="">
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" charset="utf-8">
 </head>
 
-<body onload='choice()' async importance="high">
+<body onload='choice()'>
     <div id="loadDiv" class="loadDiv"></div>
     <div class="music" onclick="showTextarea()"><span class="musicClef music-color">&#119051;</span></div>
     <div class="input" id="input">
@@ -310,6 +311,9 @@
     <script src="js/play.js"></script>
     <script src="js/switch.js"></script>
     <script src="js/ui.js"></script>
+    <script defer>
+        document.querySelector('#async').href = 'css/async.css';
+    </script>
 </body>
 
 </html>

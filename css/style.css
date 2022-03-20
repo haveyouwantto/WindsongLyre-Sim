@@ -8,17 +8,6 @@
     --note-color: rgb(88, 153, 144);
 }
 
-@font-face {
-    font-family:'genshin impact';
-    src: url('zh-cn.woff2') format('truetype');
-}
-
-body {
-    background: url('../img/bg.png') no-repeat center fixed;
-    user-select: none;
-    background-size: cover;
-}
-
 .key {
     border: 0px;
     min-width: 5vw;
