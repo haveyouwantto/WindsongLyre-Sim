@@ -10,7 +10,7 @@
 
 @font-face {
     font-family:'genshin impact';
-    src: url('zh-cn.ttf') format('truetype');
+    src: url('zh-cn.woff2') format('truetype');
 }
 
 body {
