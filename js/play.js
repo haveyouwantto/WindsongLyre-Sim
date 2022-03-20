@@ -234,7 +234,7 @@ function onLoadComplete(instId) {
     loadDiv.innerHTML = "加载完成";
     loadDiv.hidden = true;
     asyncLoad = document.querySelector('#async');
-    if (asyncLoad.href == "") {
+    if (asyncLoad.href != "css/async.css") {
         asyncLoad.href = 'css/async.css';
     }
 }
