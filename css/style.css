@@ -228,18 +228,3 @@ body {
 .note7 {top: 2.2vw;}
 .note8 {top: 2.75vw;}
 .note9 {top: -2.3vw;}
-
-#loadDiv {
-    width: 100vw;
-    height: 100vh;
-    background-color: var(--box-shadow-color2);
-    color: var(--note-color);
-    font-family: 'genshin impact', Fallback, sans-serif;
-    font-size: 3vw;
-    text-align: center;
-    line-height: 100vh;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 999;
-}

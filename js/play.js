@@ -218,17 +218,14 @@ function clearMusic() {
 
 // TODO 添加加载提示
 
-let loadDiv;
 function onLoad(instId) {
-    loadDiv = document.getElementById("loadDiv");
-    loadDiv.innerHTML = "正在加载音色...";
+    console.log("正在加载音色...");
 }
 
 function onLoadProgress(instId, progress) {
-    loadDiv.innerHTML = `正在加载音色...  ${progress} / 21`;
+    console.log(`正在加载音色...  ${progress} / 21`);
 }
 
 function onLoadComplete(instId) {
-    loadDiv.innerHTML = "加载完成";
-    loadDiv.hidden = true;
+    console.log("加载完成");
 }
