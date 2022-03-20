@@ -219,6 +219,7 @@ function clearMusic() {
 // TODO 添加加载提示
 
 let loadDiv;
+let asyncLoad;
 function onLoad(instId) {
     loadDiv = document.getElementById("loadDiv");
     loadDiv.hidden = false;
@@ -232,4 +233,8 @@ function onLoadProgress(instId, progress) {
 function onLoadComplete(instId) {
     loadDiv.innerHTML = "加载完成";
     loadDiv.hidden = true;
+    asyncLoad = document.querySelector('#async');
+    if (asyncLoad.href == "") {
+        asyncLoad.href = 'css/async.css';
+    }
 }
