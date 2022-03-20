@@ -4,7 +4,8 @@
 }
 
 body {
-    background: url('../img/bg.png') no-repeat center fixed;
+    background: url('../img/bg.jpg') no-repeat center fixed;
+    background-color: #1a2f51;
     user-select: none;
     background-size: cover;
 }
