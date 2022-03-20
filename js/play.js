@@ -63,6 +63,7 @@ function loadAudio(id = "windsong_lyre") {
         xhr.onload = function () {
             aCtx.decodeAudioData(this.response, buffer => audioMap.set(key, buffer));
             loaded++;
+            onLoadProgress(id, loaded);
             if (loaded == 21) {
                 onLoadComplete(id);
             }
@@ -71,6 +72,8 @@ function loadAudio(id = "windsong_lyre") {
             fallback = true;
             console.warn('XHR failed. Using fallback implementation.')
             let audio = new Audio(url);
+            loaded++;
+            onLoadProgress(id, loaded);
             audioMap.set(key, audio);
         };
         xhr.send();
@@ -215,6 +218,14 @@ function clearMusic() {
 
 // TODO 添加加载提示
 
-function onLoad(instId) { }
+function onLoad(instId) {
+    console.log("正在加载音色...");
+}
 
-function onLoadComplete(instId) { }
+function onLoadProgress(instId, progress) {
+    console.log(`正在加载音色...  ${progress} / 21`);
+}
+
+function onLoadComplete(instId) {
+    console.log("加载完成");
+}
