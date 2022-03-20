@@ -221,8 +221,8 @@
 #loadDiv {
     width: 100vw;
     height: 100vh;
-    background-color: var(--box-shadow-color2);
-    color: var(--note-color);
+    background-color: var(--dialog-background-color);
+    color: var(--background-text1);
     font-family: 'genshin impact', Fallback, sans-serif;
     font-size: 3vw;
     text-align: center;

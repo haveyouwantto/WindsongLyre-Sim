@@ -221,6 +221,7 @@ function clearMusic() {
 let loadDiv;
 function onLoad(instId) {
     loadDiv = document.getElementById("loadDiv");
+    loadDiv.hidden = false;
     loadDiv.innerHTML = "正在加载音色...";
 }
 
