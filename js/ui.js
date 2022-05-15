@@ -1,4 +1,5 @@
 var show = true;
+var isMobile = 'ontouchstart' in document.documentElement;
 function showTextarea() {
     let inputDiv = document.getElementById("input");
     if (show == false) {
@@ -23,14 +24,18 @@ function showTextarea() {
 //     }
 // }
 
-for (let node of document.querySelectorAll('.key')) {
-    node.addEventListener('mousedown', e => {
-        if (show != -1) play(node.id, true);
-    });
+for (let node of document.querySelectorAll('.triangle')) {
+    let key = node.querySelector('.key').id;
+    if (isMobile) {
+        node.addEventListener('touchstart', e => {
+            if (show != -1) play(key, true);
+        });
+    } else {
+        node.addEventListener('mousedown', e => {
+            if (show != -1) play(key, true);
+        });
+    }
     removeID(node.parentNode.childNodes[1]);
-    // node.addEventListener('touchstart', e => {
-    //     if (show != -1) play(node.id, true);
-    // });
 }
 
 let bpmField = document.getElementById("bpm");
