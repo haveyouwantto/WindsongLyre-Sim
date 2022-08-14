@@ -24,6 +24,10 @@ let keyMap = {
     "m": "7-",
 };
 
+/**
+ * False = flat
+ * True = sharp
+ */
 let modeMap = {
     "Ionian": {},
     "Dorian": { "3": false, "7": false },
