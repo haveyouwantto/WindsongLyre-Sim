@@ -55,5 +55,6 @@ function removeID(spread) {
 
 function selectMode(node){
     mode = node.innerText;
+    document.querySelector("#transpose > span:nth-child(4) > div > span").innerText = node.innerText;
     document.querySelector("#transpose > span:nth-child(4) > div > div").visibility = "hidden";
 }
