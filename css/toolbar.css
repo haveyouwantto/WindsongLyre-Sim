@@ -9,6 +9,12 @@
     --selection-color: rgb(172,157,127);
 }
 
+.content{
+    display: flex;
+    flex-direction: column;
+    margin: 0.6vw 0 0 2.5vw;
+}
+
 .toolbar{
     top: 2vw;
     right: 2vw;
@@ -156,6 +162,13 @@
     font-size: 1vw;
     display: inline;
     margin: 0.6vw 0 0 2.5vw;
+    color: var(--background-text1);
+}
+
+.settingsField{
+    display: flex;
+    align-items: center;
+    font-size: 1vw;
     color: var(--background-text1);
 }
 
@@ -328,6 +341,7 @@
 .instrumentSelection {
     top: 2vw;
     left: 2vw;
+    position: absolute;
 }
 
 .modeSelection {
@@ -336,7 +350,6 @@
 
 .combo-box {
     padding: 5px;
-    position: absolute;
     border-radius: 999px;
     color: var(--foreground-text);
     min-width: 8vw;
@@ -366,4 +379,8 @@
 
 .combo-box p:hover {
     background-color: #4f5870;
+}
+
+.settingsText{
+    display: inline;
 }
