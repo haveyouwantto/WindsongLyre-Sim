@@ -24,6 +24,23 @@ let keyMap = {
     "m": "7-",
 };
 
+/**
+ * False = flat
+ * True = sharp
+ */
+let modeMap = {
+    "Ionian": {},
+    "Dorian": { "3": false, "7": false },
+    "Phrygian": { "2": false, "3": false, "6": false, "7": false },
+    "Lydian": { "4": true },
+    "Mixolydian": { "7": false },
+    "Aeolian": { "3": false, "6": false, "7": false },
+    "Locrian": { "2": false, "3": false, "5": false, "6": false, "7": false }
+}
+
+let mode = "Ionian";
+let transpose = 0;
+
 var audioMap = new Map();
 let fallback = false;
 
@@ -39,7 +56,7 @@ volume.connect(compressor);
 compressor.connect(masterVolume);
 masterVolume.connect(aCtx.destination);
 
-function playSound(buffer) {
+function playSound(buffer, detune = 0) {
     if (fallback) {
         buffer.volume = 0.5;
         buffer.currentTime = 0;
@@ -47,6 +64,7 @@ function playSound(buffer) {
     } else {
         let source = aCtx.createBufferSource();
         source.buffer = buffer;
+        source.detune.value = detune;
         source.connect(volume);
         source.start();
     }
@@ -78,6 +96,14 @@ function loadAudio(id = "windsong_lyre") {
         };
         xhr.send();
     }
+}
+
+function getTranspose(note) {
+    let noteId = note[0];
+    if (noteId in modeMap[mode]) {
+        return modeMap[mode][noteId] ? 1 : -1;
+    }
+    return 0;
 }
 
 let notes = {};
@@ -112,7 +138,8 @@ function play(key, autoRelease = true) {
         } else {
             spread.setAttribute('id', 'spread1')
         };
-        playSound(audioMap.get(key));
+
+        playSound(audioMap.get(key), (getTranspose(note) + transpose) * 100);
         if (autoRelease) setTimeout(release, 100, key);
     }
 }
@@ -193,7 +220,7 @@ function startMusic() {
         if (input != "") {
             updateBpm(bpm);
             let input = document.getElementById("textareaInput").value;
-            showTextarea();
+            showTextarea('input');
             playSheet(input.replaceAll('\n', ''));
         }
     }

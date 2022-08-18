@@ -5,27 +5,61 @@
     <title>&#x98CE;&#x7269;&#x4E4B;&#x8BD7;&#x7434;&#x6A21;&#x62DF;&#x5668;</title>
     <link rel="stylesheet" type="text/css" href="css/animations.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" type="text/css" href="css/music.css">
+    <link rel="stylesheet" type="text/css" href="css/toolbar.css">
     <link rel="stylesheet" type="text/css" id="async" href="" loaded="0">
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" charset="utf-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"
+        charset="utf-8">
 </head>
 
 <body onload='choice()'>
     <div id="loadDiv" class="loadDiv">正在加载...</div>
-    <div class="music" onclick="showTextarea()"><span class="musicClef music-color">&#119051;</span></div>
+    <div class="toolbar">
+        <div class="music" onclick="showTextarea('transpose')"><span class="musicClef music-color">&#8645;</span></div>
+        <div class="music" onclick="showTextarea('input')"><span class="musicClef music-color">&#9655;</span></div>
+    </div>
     <div class="input" id="input">
-        <span class="bpmText">BPM: </span>
+        <span class="bpmText"><div class="settingsText">BPM: </div></span>
         <input class="bpm" id="bpm" type="number" value="60" maxlength="4" placeholder="&#x8BF7;&#x8F93;&#x5165;BPM">
-        <span class="closeMusic" onclick="showTextarea()">&#11020;</span>
-		<hr class="line0-1" />
-        <textarea class="textareaInput" id="textareaInput" placeholder="&#x8BF7;&#x8F93;&#x5165;&#x4E50;&#x8C31;" spellcheck="false"></textarea>
-		<hr class="line0-2" />
+        <span class="closeMusic" onclick="showTextarea('input')">&#11020;</span>
+        <hr class="line0-1" />
+        <textarea class="textareaInput" id="textareaInput" placeholder="&#x8BF7;&#x8F93;&#x5165;&#x4E50;&#x8C31;"
+            spellcheck="false"></textarea>
+        <hr class="line0-2" />
         <div class="buttonGroup">
             <button class="start" onclick="startMusic()">&#x5F00;&#x59CB;</button>
             <button class="pause" onclick="pauseMusic()">&#x505C;&#x6B62;</button>
             <button class="clear" onclick="clearMusic()">&#x6E05;&#x7A7A;</button>
         </div>
+    </div>
+    <div class="input" id="transpose">
+        <span class="window-title">转调</span>
+        <span class="closeMusic" onclick="showTextarea('transpose')">&#11020;</span>
+        <hr class="line0-1" />
+        <span class="content">
+            <span class=" settingsField" >
+                <div class="settingsText">调式：</div>
+                <div class="combo-box modeSelection">
+                    <span id="modeText">调式</span>
+                    <div class="combo-items">
+                        <!-- 以下元素为测试用，稍后需要改成js动态添加 -->
+                        <p onclick="selectMode(this);">Ionian</p>
+                        <p onclick="selectMode(this);">Dorian</p>
+                        <p onclick="selectMode(this);">Phrygian</p>
+                        <p onclick="selectMode(this);">Lydian</p>
+                        <p onclick="selectMode(this);">Mixolydian</p>
+                        <p onclick="selectMode(this);">Aeolian</p>
+                        <p onclick="selectMode(this);">Locrian</p>
+                    </div>
+                </div>
+            </span>
+            <br>
+            <span class=" settingsField">
+                <div class="settingsText">音高：</div>
+                <input class="bpm" id="transpose-num" type="number" value="0" maxlength="2" max="12" min="-12"
+                    placeholder="请输入半音高"></span>
+        </span>
     </div>
     <div class="location">
         <table id="keyboard">
@@ -298,8 +332,8 @@
             </tr>
         </table>
     </div>
-    <div class="combo-box">
-        <span>乐器</span>
+    <div class="combo-box instrumentSelection">
+        <span id="instruments">乐器</span>
         <div class="combo-items">
             <!-- 以下元素为测试用，稍后需要改成js动态添加 -->
             <p onclick="choice('windsong_lyre')">风物之诗琴</p>

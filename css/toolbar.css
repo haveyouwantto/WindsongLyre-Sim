@@ -9,16 +9,37 @@
     --selection-color: rgb(172,157,127);
 }
 
-.music {
+.content{
+    display: flex;
+    flex-direction: column;
+    margin: 0.6vw 0 0 2.5vw;
+}
+
+.toolbar{
     top: 2vw;
     right: 2vw;
+    width: max-content;
+    height: max-content;
+    position: fixed;
+    display: flex;
+}
+
+.window-title {
+    font-size: 1.5vw;
+    margin: 0.5vw;
+    display: inline-block;
+    color: var(--background-text1);
+    font-family: 'genshin impact', Fallback, sans-serif;
+}
+
+.music {
     width: 2vw;
     height: 2vw;
-    position: fixed;
     border-radius: 999px;
     background-color: var(--background-color);
     box-shadow: 0 0 0.1vw 0.4vw var(--box-shadow-color1),
     0 0 0.1vw 0.6vw var(--box-shadow-color2);
+    margin-left: 2vw;
 }
 
 .music:hover {
@@ -139,8 +160,15 @@
     width: 3vw;
     height: 2vw;
     font-size: 1vw;
-    display: inline-block;
+    display: inline;
     margin: 0.6vw 0 0 2.5vw;
+    color: var(--background-text1);
+}
+
+.settingsField{
+    display: flex;
+    align-items: center;
+    font-size: 1vw;
     color: var(--background-text1);
 }
 
@@ -310,11 +338,18 @@
     color: var(--note-color);
 }
 
-.combo-box {
+.instrumentSelection {
     top: 2vw;
     left: 2vw;
-    padding: 5px;
     position: absolute;
+}
+
+.modeSelection {
+    display: inline;
+}
+
+.combo-box {
+    padding: 5px;
     border-radius: 999px;
     color: var(--foreground-text);
     min-width: 8vw;
@@ -344,4 +379,8 @@
 
 .combo-box p:hover {
     background-color: #4f5870;
+}
+
+.settingsText{
+    display: inline;
 }
