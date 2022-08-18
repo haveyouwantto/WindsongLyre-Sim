@@ -1,7 +1,7 @@
 var show = true;
 var isMobile = 'ontouchstart' in document.documentElement;
-function showTextarea() {
-    let inputDiv = document.getElementById("input");
+function showTextarea(id) {
+    let inputDiv = document.getElementById(id);
     if (show == false) {
         inputDiv.classList.remove('input-active')
         inputDiv.classList.add('input-inactive')
@@ -43,8 +43,17 @@ bpmField.addEventListener('focusout', () => {
     updateBpm(bpmField.value);
 });
 
+document.getElementById('transpose-num').addEventListener('change', e => {
+    transpose= parseInt(e.target.value);
+});
+
 function removeID(spread) {
     spread.addEventListener("animationend", function () {
         spread.removeAttribute('id');
     }, false);
+}
+
+function selectMode(node){
+    mode = node.innerText;
+    document.querySelector("#transpose > span:nth-child(4) > div > div").visibility = "hidden";
 }

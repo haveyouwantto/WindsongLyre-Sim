@@ -220,7 +220,7 @@ function startMusic() {
         if (input != "") {
             updateBpm(bpm);
             let input = document.getElementById("textareaInput").value;
-            showTextarea();
+            showTextarea('input');
             playSheet(input.replaceAll('\n', ''));
         }
     }

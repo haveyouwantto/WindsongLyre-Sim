@@ -6,5 +6,5 @@ function choice(id = "windsong_lyre") {
     global.style.setProperty('--background-color-hover1', insts[id].bg1);
     global.style.setProperty('--background-color-hover2', insts[id].bg2);
     global.style.setProperty('--animation-color', insts[id].bg2);
-    document.querySelector(".combo-box span").innerHTML = insts[id].name;
+    document.getElementById("instruments").innerText = insts[id].name;
 }
