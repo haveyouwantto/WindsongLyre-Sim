@@ -348,8 +348,8 @@
     display: inline;
 }
 
-.combo-box {
-    padding: 5px;
+.combo-box {    
+    padding: 5px 12px 5px 12px;
     border-radius: 999px;
     color: var(--foreground-text);
     min-width: 8vw;
