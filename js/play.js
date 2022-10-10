@@ -93,6 +93,9 @@ function loadAudio(id = "windsong_lyre") {
             loaded++;
             onLoadProgress(id, loaded);
             audioMap.set(key, audio);
+            if (loaded == 21) {
+                onLoadComplete(id);
+            }
         };
         xhr.send();
     }
