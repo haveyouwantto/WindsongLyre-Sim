@@ -1,5 +1,6 @@
 let global = document.querySelector('body');
 
+// 切换乐器
 function choice(id = "windsong_lyre") {
     loadAudio(id);
     global.style.setProperty('--note-color', insts[id].color);

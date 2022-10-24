@@ -1,5 +1,8 @@
 var show = true;
-var isMobile = 'ontouchstart' in document.documentElement;
+var isMobile = 'ontouchstart' in document.documentElement;  // 检测是否为手机
+
+
+// 显示对话框
 function showTextarea(id) {
     let inputDiv = document.getElementById(id);
     if (show == false) {
@@ -24,6 +27,7 @@ function showTextarea(id) {
 //     }
 // }
 
+// 为琴键添加事件
 for (let node of document.querySelectorAll('.triangle')) {
     let key = node.querySelector('.key').id;
     if (isMobile) {
@@ -38,11 +42,13 @@ for (let node of document.querySelectorAll('.triangle')) {
     removeID(node.parentNode.childNodes[1]);
 }
 
+// BPM自动更新
 let bpmField = document.getElementById("bpm");
 bpmField.addEventListener('focusout', () => {
     updateBpm(bpmField.value);
 });
 
+// 转调自动更新
 document.getElementById('transpose-num').addEventListener('change', e => {
     transpose= parseInt(e.target.value);
 });
@@ -53,6 +59,8 @@ function removeID(spread) {
     }, false);
 }
 
+
+// 设置调式
 function selectMode(node){
     mode = node.innerText;
     document.querySelector("#modeText").innerText = node.innerText;

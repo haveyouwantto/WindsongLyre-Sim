@@ -44,9 +44,35 @@ let transpose = 0;
 var audioMap = new Map();
 let fallback = false;
 
-
+// 创建AudioContext
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
 let aCtx = new AudioContext();
+
+// 创建音频处理流程
+
+/* 
+   ┌──────────────┐        ┌──────────────┐
+   │              │        │              │
+   │    source    ├───────►│    volume    │
+   │              │        │              │
+   └──────────────┘        └──────┬───────┘
+                                  │
+                                  │
+                                  ▼
+   ┌──────────────┐        ┌──────────────┐
+   │              │        │              │
+   │ master volume│◄───────┤  compressor  │
+   │              │        │              │
+   └──────┬───────┘        └──────────────┘
+          │
+          │
+          ▼
+   ┌──────────────┐
+   │              │
+   │    output    │
+   │              │
+   └──────────────┘
+ */
 let compressor = new DynamicsCompressorNode(aCtx);
 let volume = aCtx.createGain();
 volume.gain.value = 0.5;
@@ -56,6 +82,7 @@ volume.connect(compressor);
 compressor.connect(masterVolume);
 masterVolume.connect(aCtx.destination);
 
+// 播放声音
 function playSound(buffer, detune = 0) {
     if (fallback) {
         buffer.volume = 0.5;
@@ -70,6 +97,7 @@ function playSound(buffer, detune = 0) {
     }
 }
 
+// 加载音频
 function loadAudio(id = "windsong_lyre") {
     let loaded = 0;
     onLoad(id);
@@ -86,6 +114,8 @@ function loadAudio(id = "windsong_lyre") {
                 onLoadComplete(id);
             }
         };
+
+        // 检测到错误，进入fallback模式
         xhr.onerror = function () {
             fallback = true;
             console.warn('XHR failed. Using fallback implementation.')
@@ -101,6 +131,7 @@ function loadAudio(id = "windsong_lyre") {
     }
 }
 
+// 音符根据调式进行偏移
 function getTranspose(note) {
     let noteId = note[0];
     if (noteId in modeMap[mode]) {
@@ -117,6 +148,7 @@ let bpm = 60;
 let delay = [4000, 2000, 1000, 500, 250, 125, 62.5, 31.25];// 60BPM
 let newDelay = [];// ???BPM
 
+// 键盘事件
 document.onkeydown = e => {
     let note = keyMap[e.key];
     if (!notes[note] && show != -1) {
@@ -130,6 +162,7 @@ document.onkeyup = e => {
     }
 }
 
+// 根据按键播放声音
 function play(key, autoRelease = true) {
     let note = keyMap[key];
     if (note != null) {
@@ -147,6 +180,7 @@ function play(key, autoRelease = true) {
     }
 }
 
+// 松开按键
 function release(key) {
     let note = keyMap[key];
     if (note != null) {
@@ -155,6 +189,7 @@ function release(key) {
     }
 }
 
+// 播放乐谱
 function playSheet(string, i = 0) {
     let delayTime = newDelay[3];
     let group = [];
@@ -216,6 +251,8 @@ function getNewDelayTime(string, i) {
     return [newDelayTime, i];
 }
 
+
+// 点击播放按钮后执行
 function startMusic() {
     stopped = false;
     bpm = document.getElementById("bpm").value;
@@ -229,6 +266,8 @@ function startMusic() {
     }
 }
 
+
+// 更新BPM
 function updateBpm(bpm) {
     let multiplier = 60 / bpm;
     for (delayNum in delay) {
