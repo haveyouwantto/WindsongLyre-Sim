@@ -1,0 +1,14 @@
+{
+    "short_name": "风琴模拟器",
+    "name": "原神风物之诗琴模拟器",
+    "description":"原神乐器模拟器",
+    "icons": [
+        {
+            "src": "favicon.ico",
+            "sizes": "256x256"
+        }
+    ],
+    "start_url": ".",
+    "display": "standalone",
+    "orientation": "landscape"
+}
