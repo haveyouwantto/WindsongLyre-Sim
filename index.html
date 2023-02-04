@@ -46,7 +46,6 @@
                 <div class="combo-box modeSelection">
                     <span id="modeText">调式</span>
                     <div class="combo-items">
-                        <!-- 以下元素为测试用，稍后需要改成js动态添加 -->
                         <p onclick="selectMode(this);">Ionian</p>
                         <p onclick="selectMode(this);">Dorian</p>
                         <p onclick="selectMode(this);">Phrygian</p>
@@ -339,13 +338,14 @@
     <div class="combo-box instrumentSelection">
         <span id="instruments">乐器</span>
         <div class="combo-items">
-            <!-- 以下元素为测试用，稍后需要改成js动态添加 -->
+            <!-- 乐器列表 -->
             <p onclick="choice('windsong_lyre')">风物之诗琴</p>
             <p onclick="choice('floral_zither')">镜花之琴</p>
             <p onclick="choice('floral_zither_old')">镜花之琴(旧版)</p>
             <p onclick="choice('vintage_lyre')">老旧的诗琴</p>
         </div>
     </div>
+    <input type="range" min="0" max="100" value="100" id="volume">
     <script src="instruments/manifest.js"></script>
     <script src="js/play.js"></script>
     <script src="js/switch.js"></script>

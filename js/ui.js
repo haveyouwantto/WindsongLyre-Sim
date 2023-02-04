@@ -65,3 +65,8 @@ function selectMode(node){
     mode = node.innerText;
     document.querySelector("#modeText").innerText = node.innerText;
 }
+
+let volumeSlider = document.getElementById('volume');
+volumeSlider.addEventListener('change',e=>{
+    masterVolume.gain.value = Math.pow(volumeSlider.value /100,2);
+})

@@ -233,3 +233,10 @@
     left: 0;
     z-index: 999;
 }
+
+#volume {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin: 8px;
+}
